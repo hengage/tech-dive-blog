@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% block title %} {{ post.title_tag }} {% endblock title %}
+{% block content %}
+
+
+<div class="p-3 pt-1">
+
+    <div class=" post-detail">
+        <h5>Current User: {{ user.username }} - {{user.id}}</h5>
+
+        <h3>{{ post.title.upper }} - {{ post.author.id }}</h3>
+        <h5><a href="{% url 'category' post.category|slugify %}"> {{ post.category }} </h5></a>
+            <small> 
+                By {{ post.author.first_name.title }} {{ post.author.last_name.title }} |
+                Email: {{ post.author.email }}
+            
+            <br>
+                Created: {{ post.date_created }}
+                <br>
+                Last updated: {{ post.date_updated }}
+            </small>
+
+            {% if user.is_authenticated %}
+              {% if user.id == post.author.id %}
+              <!-- If the logged in user is the author of current post
+            they should be able to edit and delete the post. -->
+                <div>
+                    <a href="{% url 'edit_post' post.pk %}">Edit</a>
+                    <a href="{% url 'delete_post' post.pk %}">Delete</a>
+                </div>
+              {% endif %}
+            {% endif %}
+            <hr>
+            
+            <div style="margin-top: 20px;">
+                {{ post.body|safe }}
+            </div>
+    </div>
+<br>
+
+<!-- {% if post.comments.all %} 
+    
+    <h3>{{ post.comments.count }} comment{{ post.comments.all|pluralize}}</h3>
+    {% for comment in post.comments.all %}
+        <strong>{{ comment.commentator}}</strong> <br>
+        {{ comment.comment_body }}
+        <p><small>{{ comment.timestamp }}</small></p>
+    {% endfor %}  
+{% else %} 
+    <p>No comment yet. Be the first to add a comment</p>
+{% endif %} -->
+
+<h2>Comments:</h2>  
+<h3>{{ comments.count }} comment{{ comments.all|pluralize }}</h3>
+
+    {% if comments.all %}
+    {% for comment in comments.all %}
+        <strong>{{ comment.commentator}}</strong> <br>
+        {{ comment.comment_body }}
+        <p><small>{{ comment.timestamp }}</small></p>
+    {% endfor %}  
+    {% else %} 
+    <p>No comment yet. Be the first to add a comment</p>
+    {% endif %}
+
+
+
+
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ comment_form.as_p }}
+
+    {% if user.is_authenticated %}
+    <button type="submit" class="btn btn-outline-success">Post</button>
+    {% else %} 
+    <button type="submit" class="btn btn-outline-success" disabled>Post</button>
+    <span>Log in to comment</span>
+    {% endif %}
+</form>
+
+
+{% if all_author_post %}
+    <div>
+        <h3>Other Posts By {{ post.author.first_name.title }} {{ post.author.last_name.title }}</h3>
+        {% for post in all_author_post %}
+        <a href="{% url 'article_detail' post.pk%}">{{post.title}}</a><br>
+        {% endfor %}
+    </div>
+{% endif %}
+
+
+
+
+<!-- {% for post in view.books %}
+    {{post.title}}<br>
+{% endfor %} -->
+
+<br>
+<a href="{% url 'home' %}" class="btn btn-primary mt-3">Home</a>
+</div>
+
+
+
+
+{% endblock content %}

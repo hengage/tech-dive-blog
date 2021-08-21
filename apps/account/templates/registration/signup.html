@@ -1,0 +1,51 @@
+{% extends 'base.html' %} 
+{% load crispy_forms_tags %}
+{% block title %} Crreate an account {% endblock title %}
+
+{% block content %}
+
+<div class="p-3">
+    <h1>Register</h1>
+
+
+    <div class="form-group hero is-dark">
+        <form method="POST">
+            {% csrf_token %}
+
+            <!--{{ for.non_field.erros }}
+            {{ form.first_name.errors }}
+            <label for="{{ form.first_name.id_for_label }}" class="ms-1">:</label>
+            {{ form.first_name.label_tag}}
+            {{ form.address }}
+            {{ form.address.help_text}}-->
+    
+
+           {{ form.as_p}}
+
+
+    <!--{% for field in form %}
+        <div class="fieldWrapper">
+            {{ field.errors }}
+            {{ field.label_tag }} {{ field }}
+
+            {% if field.help_text %}
+            <p class="help">{{ field.help_text|safe }}</p>
+            {% endif %}
+        </div>
+    {% endfor %}-->
+
+
+            <!-- A way to render forms manually for styling-->
+            <!--{% for field in form %}
+            <div class="input-goup">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                <input class="form-control" id="{{ field.id_for_label }}" maxlength="200" name="{{ field.html_name }}" label="{{ field.label }}" type='{{ field.widget_type }}' />
+            </div>
+            {% endfor %}-->
+             
+            <button class="btn btn-secondary">Create account</button>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}
