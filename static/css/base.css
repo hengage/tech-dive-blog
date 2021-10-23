@@ -2,6 +2,10 @@ body {
     background-color: aliceblue;
 }
 
+a {
+    text-decoration: none;
+}
+
 .form-group {
     padding: 10px;
     padding-top: 0;
