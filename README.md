@@ -10,10 +10,10 @@ My aim was to keep it as simple as possible while also making it similar to a re
   * blog system - creating and deleting blog posts
   * a comment functionality so authenticated users can comment on posts
   
-Boottrap cdn was used for the styling, although I paid  less attention yo the frontend part of the project 
-as my focus was on Django.
+Boostrap cdn was used for the styling, although I paid  less attention to the frontend part of 
+the project as my focus was on Django.
 
-I utilized the power of Class Based Views and the flexibility of Function Based Views
+For the views, I utilized the power of Class Based Views and the flexibility of Function Based Views
 
 # If you are interested in improving this project
 
@@ -30,7 +30,7 @@ activate
 ```
 
 For clarity, the apps are placed in a dedicated 'apps' folder to ease workflow. 
-The following code snipet llows it to work just fine like that
+The following code snipet allows the project to work just fine like nothing changed:
 ```
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(BASE_DIR,'apps'))
