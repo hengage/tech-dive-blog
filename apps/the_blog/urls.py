@@ -36,11 +36,12 @@ urlpatterns = [
 
     # Path for function detail view.
     path('article/<int:pk>', ArticleDetailView, name='article_detail'),
+    # path('article/<int:pk>', add_comment, name='add_comment'),
     
     #path for function list view on detail view.
     #  path('article/', ArticleListView, name='article_list2'),
 
-    path('', HomeView.as_view(), name='home' )  
+    path('', HomeView.as_view(), name='home' )
 
 
 ]
