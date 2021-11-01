@@ -17,4 +17,13 @@ class TestCustomUserCreationForm(TestCase):
             'result':None
         })
 
-        self.assertTrue(form.is_valid())
+        # self.assertTrue(form.is_valid())
+        # self.assertTrue(self.form.is_valid())
+        self.assertEqual(form.data['first_name'], 'henry')
+
+    def test_form_is_not_valid_data(self):
+        form = CustomUserCreationForm(data={'gender':'male'})
+
+        print(form.errors)
+
+        self.assertEquals(len(form.errors),4)
