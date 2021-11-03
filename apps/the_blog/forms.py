@@ -35,10 +35,18 @@ class UpdateForm(forms.ModelForm):
         fields = ['title', 'title_tag', 'category', 'body',]
 
         widgets ={
-               'title': forms.TextInput(attrs={'class':'form-control bigger-height'}),
-               'title_tag': forms.TextInput(attrs={'class':'form-control bigger-height'}),
-               'category': forms.Select(choices=CATEGORY_CHOICES, attrs={'class':'form-control bigger-height'}),
-               'body': forms.Textarea(attrs={'class':'form-control', 'rows': 18}),
+               'title': forms.TextInput(attrs={
+                   'class':'form-control bigger-height'
+                   }),
+               'title_tag': forms.TextInput(attrs={
+                   'class':'form-control bigger-height'
+                   }),
+               'category': forms.Select(choices=CATEGORY_CHOICES, attrs={
+                   'class':'form-control bigger-height'
+                   }),
+               'body': forms.Textarea(attrs={
+                   'class':'form-control', 'rows': 18
+                   }),
         }
 
         
@@ -50,5 +58,14 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ['comment_body',]
+
+        widgets = {
+            'comment_body': forms.Textarea(attrs={
+                'class': 'add-comment-box',
+                # 'rows': 43,
+                # 'cols':59
+                
+            })
+        }
 
         

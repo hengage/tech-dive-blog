@@ -3,13 +3,12 @@
 {% block content %}
 
 
-<div class="p-3 pt-1">
+<section class="p-3 pt-1  mx-auto" ;>
 
-    <div class=" post-detail">
-        <h5>Current User: {{ user.username }} - {{user.id}}</h5>
+    <article class=" post-detail mt-3 mx-auto" style="width: 90%";>
 
-        <h3>{{ post.title.upper }} - {{ post.author.id }}</h3>
-        <h5>
+        <h1 class="post-title">{{ post.title.upper }}</h1>
+        <h5 class="mb-4">
             <a href="{% url 'category' post.category|slugify %}"> 
                 {{ post.category }} 
             </a>
@@ -25,95 +24,90 @@
                 Last updated: {{ post.date_updated }}
             </small>
 
-            {% if user.is_authenticated %}
               {% if user.id == post.author.id %}
-              <!-- If the logged in user is the author of current post
-            they should be able to edit and delete the post. -->
                 <div>
                     <a href="{% url 'edit_post' post.pk %}">Edit</a>
                     <a href="{% url 'delete_post' post.pk %}">Delete</a>
                 </div>
               {% endif %}
-            {% endif %}
             <hr>
             
-            <div style="margin-top: 20px;">
+            <div class="post-body" style="margin-top: 20px;">
                 {{ post.body|safe }}
             </div>
-    </div>
-<br>
+        </div>
+    </article>
 
-<!-- {% if post.comments.all %} 
-    
-    <h3>{{ post.comments.count }} comment{{ post.comments.all|pluralize}}</h3>
-    {% for comment in post.comments.all %}
-        <strong>{{ comment.commentator}}</strong> <br>
-        {{ comment.comment_body }}
-        <p><small>{{ comment.timestamp }}</small></p>
-    {% endfor %}  
-{% else %} 
-    <p>No comment yet. Be the first to add a comment</p>
-{% endif %} -->
+        <div class="cooments mt-5 mx-auto" style="width: 90%";">
+            <h3>Comments:</h3>  
+            <h6 class="mb-4">{{ comments.count }} comment{{ comments.all|pluralize }}</h6>
+        
+                {% if comments.all %}
+                {% for comment in comments.all %}
+                <div class="comment-body mb-4">
+                    <strong>{{ comment.commentator}}</strong> 
+                    <div class="mb-2">{{ comment.comment_body }}</div>
+                    <p><small>{{ comment.timestamp }}</small></p>
+                </div>
+                
+                {% endfor %}  
+                
+                {% else %} 
+                <p>No comment yet. Be the first to add a comment</p>
+                {% endif %}
+        </div>
 
-<h2>Comments:</h2>  
-<h3>{{ comments.count }} comment{{ comments.all|pluralize }}</h3>
+        <form 
+            action="" method="POST" 
+            class="mx-auto comment_form mt-5" 
+            
+        >
+            {% csrf_token %}
+            <label 
+                for="{{ comment_form.comment_body.id_for_label }}"
+            >
+                Add comment:
+            </label>
+            <div class="add-comment mt-3 mb-3">
+                {{ comment_form.comment_body }}
+            </div>
+        
+            {% if user.is_authenticated %}
+            <button type="submit" class="btn btn-outline-success">
+                Post
+            </button>
+        
+            {% else %} 
+            <button type="submit" class="btn btn-outline-success" disabled>
+                Post
+            </button>
+        
+            <span>Log in to comment</span>
+            {% endif %}
+        </form>
+ </section>
 
-    {% if comments.all %}
-    {% for comment in comments.all %}
-        <strong>{{ comment.commentator}}</strong> <br>
-        {{ comment.comment_body }}
-        <p><small>{{ comment.timestamp }}</small></p>
-    {% endfor %}  
-    {% else %} 
-    <p>No comment yet. Be the first to add a comment</p>
-    {% endif %}
-
-
-
-
-<form action="" method="POST">
-    {% csrf_token %}
-    {{ comment_form.as_p }}
-
-    {% if user.is_authenticated %}
-    <button type="submit" class="btn btn-outline-success">
-        Post
-    </button>
-
-    {% else %} 
-    <button type="submit" class="btn btn-outline-success" disabled>
-        Post
-    </button>
-
-    <span>Log in to comment</span>
-    {% endif %}
-</form>
-
-
-{% if all_author_post %}
-    <div>
-        <h3>
-            Other Posts By 
-            {{ post.author.first_name.title }}
-            {{ post.author.last_name.title }}
-        </h3>
-        {% for post in all_author_post %}
-        <a href="{% url 'article_detail' post.pk%}">
-            {{post.title}}
-        </a>
-        {% endfor %}
-    </div>
+ {% if all_author_post %}
+ <div class="m-5">
+     <h4>
+         More Posts By 
+         {{ post.author.first_name.title }}
+         {{ post.author.last_name.title }}
+     </h4>
+     {% for post in all_author_post %}
+     <a href="{% url 'article_detail' post.pk%}">
+         {{post.title}}
+     </a>
+     {% endfor %}
+ </div>
 {% endif %}
 
 
-
-
-<!-- {% for post in view.books %}
-    {{post.title}}<br>
-{% endfor %} -->
-
 <br>
-<button class="btn btn-primary mt-3" onclick="history.back()">
+<button 
+    class="btn btn-primary m-5 mt-1 go-back-btn" 
+    onclick="history.back()"
+>
     Go back
 </button>
 </div>
