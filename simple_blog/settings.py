@@ -1,9 +1,9 @@
 import os, sys
 from pathlib import Path
 
-from decouple import config, Csv
+from decouple import config
 import dj_database_url
-from dj_database_url import parse 
+import django_heroku
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(BASE_DIR,'apps'))
@@ -142,3 +142,5 @@ LOGOUT_REDIRECT_URL = 'login'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+django_heroku.settings(locals())
