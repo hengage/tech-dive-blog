@@ -1,8 +1,9 @@
-import os
-import sys
+import os, sys
 from pathlib import Path
 
 from decouple import config, Csv
+import dj_database_url
+from dj_database_url import parse 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(BASE_DIR,'apps'))
@@ -44,6 +45,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -75,20 +77,26 @@ WSGI_APPLICATION = 'simple_blog.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'simple_blog',
+#         'USER': 'postgres',
+#         'PASSWORD': 'yungkidatune1',
+#         'HOST': 'localhost',
+#         'PORT': 5432,
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'simple_blog',
-        'USER': 'postgres',
-        'PASSWORD': 'yungkidatune1',
-        'HOST': 'localhost',
-        'PORT': 5432,
-    }
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
 }
 
-#DATE_FORMAT = ['y, N j']
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
 
-# Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -130,18 +138,9 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_ROOT = STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles')) # os.path.join(BASE_DIR, '/static')
 STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))]
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# if DEBUG:
-#     STATICFILES_DIRS = [
-#         os.path.join(BASE_DIR, 'static')
-#     ]
-# else:
-#     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
