@@ -26,10 +26,8 @@ SECRET_KEY = config('SECRET_KEY')
 # ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 import socket
-myHostName = socket.gethostname()
 
-print("Name of the localhost is {}".format(myHostName))
-if socket.gethostname() == "hp":
+if socket.gethostname() == "us-east-1-a.route.herokuapp.com":
     DEBUG = False
     ALLOWED_HOSTS = ["softdevblog.herokuapp.com",]
 else:
