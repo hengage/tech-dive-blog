@@ -27,7 +27,7 @@ SECRET_KEY = config('SECRET_KEY')
 
 import socket
 
-if socket.gethostname() == "server_name":
+if socket.gethostname() == "herokuapp.com":
     DEBUG = False
     ALLOWED_HOSTS = ["softdevblog.herokuapp.com",]
 else:
