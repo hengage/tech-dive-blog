@@ -19,20 +19,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = config('DEBUG',  default=False, cast=bool)
+DEBUG = config('DEBUG',  default=False, cast=bool)
 # # DEBUG = (config('DEBUG') =='True')
-# ALLOWED_HOSTS = ['softdevblog.herokuapp.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['softdevblog.herokuapp.com', 'localhost', '127.0.0.1']
 
 # ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
-import socket
-
-if socket.gethostname() == "us-east-1-a.route.herokuapp.com":
-    DEBUG = False
-    ALLOWED_HOSTS = ["softdevblog.herokuapp.com",]
-else:
-    DEBUG = True
-    ALLOWED_HOSTS = ["localhost", "127.0.0.1",]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
