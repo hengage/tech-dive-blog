@@ -1,14 +1,16 @@
 from django.contrib.auth import get_user_model
 from django.http.response import HttpResponseRedirect
-from django.urls import reverse, reverse_lazy
-from django.shortcuts import get_object_or_404, render
-from django.views.generic import ListView, DetailView
+from django.urls import reverse_lazy
+from django.shortcuts import render
+from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 
 from .models import Comment, Post, PostCategory
 from .forms import CommentForm, PostForm, UpdateForm 
 
+def error_404(request, exception):
+    return render(request, '404.html')
 
 class HomeView(ListView):
     model = Post
@@ -44,8 +46,6 @@ def ArticleDetailView(request, pk):
         post=post.id
         ).order_by('-id')
 
-    # Code to output all other posts of the author
-    # on post detail template.
     all_author_post = Post.objects.filter(
         author=post.author.id
         ).exclude(pk=pk)
@@ -107,7 +107,6 @@ class DeletePostView(UserPassesTestMixin, PostsCategoryMixin, DeleteView):
         return obj.author == self.request.user
 
 # Views for blog posts categories.
-
 class AddCategoryView(LoginRequiredMixin, PostsCategoryMixin, CreateView):
     model = PostCategory
     template_name = 'add_category.html'

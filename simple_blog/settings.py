@@ -12,15 +12,13 @@ sys.path.insert(0, os.path.join(BASE_DIR,'apps'))
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG',  default='False', cast=bool)
+# DEBUG = config('DEBUG',  default='False', cast=bool)
 # # DEBUG = (config('DEBUG') =='True')
+DEBUG = False
 ALLOWED_HOSTS = ['softdevblog.herokuapp.com', 'localhost', '127.0.0.1', '192.168.43.204']
 
 # ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
@@ -145,38 +143,18 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'verbose': {
-            'format' : "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
-            'datefmt' : "%d/%b/%Y %H:%M:%S"
-        },
-        'simple': {
-            'format': '%(levelname)s %(message)s'
-        },
-    },
-    'handlers': {
-        'file': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': 'simple_blog.log',
-            'formatter': 'verbose'
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers':['file'],
-            'propagate': True,
-            'level':'DEBUG',
-        },
-        'MYAPP': {
-            'handlers': ['file'],
-            'level': 'DEBUG',
-        },
-    }
-}
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+
+sentry_sdk.init(
+    dsn="https://03cfb7a4c09a41f3bd64b9100b86c362@o1061170.ingest.sentry.io/6051389",
+    integrations=[DjangoIntegration()],
+
+     traces_sample_rate=1.0,
+
+    send_default_pii=True,
+)
+
 
 django_heroku.settings(locals())
 

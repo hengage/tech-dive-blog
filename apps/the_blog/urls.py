@@ -31,17 +31,8 @@ urlpatterns = [
 
     path('new_blog_post/', AddPostView.as_view(), name='create_post'),
 
-    # path('article/<int:pk>', ArticleDetailView.as_view(), name='article_detail'),
-
-
     # Path for function detail view.
     path('article/<int:pk>', ArticleDetailView, name='article_detail'),
-    # path('article/<int:pk>', add_comment, name='add_comment'),
-    
-    #path for function list view on detail view.
-    #  path('article/', ArticleListView, name='article_list2'),
 
     path('', HomeView.as_view(), name='home' )
-
-
 ]
