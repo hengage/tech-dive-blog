@@ -18,11 +18,22 @@ class PostForm(forms.ModelForm):
     
 
         widgets ={
-               'title': forms.TextInput(attrs={'class':'form-control bigger-height', 'placeholder':'title'}),
-               'title_tag': forms.TextInput(attrs={'class':'form-control bigger-height'}),
-               'author': forms.TextInput(attrs={'class':'form-control bigger-height',  'type':'hidden'}),
-               'category': forms.Select(choices=CATEGORY_CHOICES, attrs={'class':'form-control bigger-height'}),
-               'body': forms.Textarea(attrs={'class':'form-control', 'rows': 18}),
+               'title': forms.TextInput(attrs={
+                   'class':'form-control bigger-height', 'placeholder':'title'
+                   }),
+               'title_tag': forms.TextInput(attrs={
+                   'class':'form-control bigger-height'
+                   }),
+               'author': forms.TextInput(attrs={
+                   'class':'form-control bigger-height',  'type':'hidden'
+                   }),
+               'category': forms.Select(choices=CATEGORY_CHOICES, attrs={
+                   'class':'form-control bigger-height'
+                   }),
+               'body': forms.Textarea(attrs={
+                   'class':'form-control  new-post-content', 
+                   'rows': 18
+                   }),
         }
 
 
@@ -45,7 +56,8 @@ class UpdateForm(forms.ModelForm):
                    'class':'form-control bigger-height'
                    }),
                'body': forms.Textarea(attrs={
-                   'class':'form-control', 'rows': 18
+                   'class':'form-control', 
+                   'rows': 18
                    }),
         }
 

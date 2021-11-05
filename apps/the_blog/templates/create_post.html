@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
-
+{% load crispy_forms_tags %}
 {% block title %} Create Blog Post {% endblock title %}
 
 {% block content %}
 
 {% if user.is_authenticated %}
-    <div class="form-group p-3">
+    <div 
+        class="form-group p-3 m-3 mt-1 create-post" 
+    >
 
-        <h2>New Post</h2>
+        <h2 class="mb-4">New Post</h2>
 
         <form method="POST">
             {% csrf_token %}
@@ -15,6 +17,7 @@
             <button class="btn btn-success">Submit Post</button>
         </form>
     </div>
+
 
     {% else %}
     <h2>You do not have  access to this page</h2>

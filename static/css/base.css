@@ -15,10 +15,6 @@ ul {
     padding-top: 0;
 }
 
-.form-control {
-    width: 70%;
-}
-
 
 .bigger-height {
     height: 35px;
@@ -65,13 +61,13 @@ a .stop-delete {
     text-align: 
 }
 
-
 .form-control {
     border: 1px solid rgb(167, 167, 167);
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     margin: 5px;
     padding: 8px;
     height: auto;
+    width: 70%
 }
 
 .form-control:focus {
@@ -134,10 +130,26 @@ form.comment_form {
     color: rgba(0, 0, 0, 0.9);
 }
 
+/* Create-post.html */
+
 @media only screen and (max-width: 600px) {
     section {
         width: 98%;
     }
 
-  
+    .create-post {
+        width: 91%;
+    }
+
+    .form-control {
+        width: 95%;
+    }
+
+    form {
+        width: auto;
+    }
+    
+    .new-post-content {
+        height: 300px;
+    }
 }
