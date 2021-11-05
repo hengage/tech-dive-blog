@@ -1,7 +1,7 @@
 import os, sys
 from pathlib import Path
 
-from decouple import config
+from decouple import config, Csv
 import dj_database_url
 import django_heroku
 
@@ -16,11 +16,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG',  default="True", cast=bool)
-# DEBUG = True
-ALLOWED_HOSTS = ['softdevblog.herokuapp.com', 'localhost', '127.0.0.1', '192.168.43.204']
+DEBUG = config('DEBUG', cast=bool)
+# ALLOWED_HOSTS = ['softdevblog.herokuapp.com', 'localhost', '127.0.0.1', '192.168.43.204']
 
-# ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 
 INSTALLED_APPS = [
@@ -85,8 +84,7 @@ DATABASES = {
 db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_from_env)
 
-# https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
-
+#auth-password-validators
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -104,8 +102,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/3.2/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -118,15 +114,12 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.2/howto/static-files/
-
 STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_ROOT = STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles')) # os.path.join(BASE_DIR, '/static')
 STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))]
-# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
@@ -141,7 +134,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-
+# Error logging with sentry
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
