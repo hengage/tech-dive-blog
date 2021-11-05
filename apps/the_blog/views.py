@@ -128,7 +128,6 @@ class EditCategoryView(LoginRequiredMixin, PostsCategoryMixin, UpdateView):
     success_url = reverse_lazy('category_list')
 
 def CategoryView(request, cats):
-    # context_object_name = 'category_posts'
     category_posts = Post.objects.filter(category__iexact=cats.replace('-', ' '))
     context =  {
         'cats':cats.replace('-', ' '),
