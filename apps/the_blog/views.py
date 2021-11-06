@@ -22,7 +22,7 @@ class PostsCategoryMixin():
         context = super().get_context_data(*args, **kwargs)
         context['category_menu'] = category_menu
         return context
-class HomeView(PostsCategoryMixin, ListView):
+class HomeView(PostsCategoryMixin, ListView,):
     model = Post
     template_name = 'home.html'
     context_object_name = 'post_list'

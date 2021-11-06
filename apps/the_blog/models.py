@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 from django.conf import settings
+from django.template.defaultfilters import slugify
 #from .choices import CATEGORY_CHOICES
 
 class PostCategory(models.Model):
@@ -20,6 +21,7 @@ class PostCategory(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=255, unique=True)
     title_tag = models.CharField(max_length=255, unique=True)
+    slug = models.SlugField(max_length=255, unique=True)
     category = models.ForeignKey(PostCategory, 
         on_delete=models.PROTECT,
         related_name='category',
@@ -48,6 +50,11 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('article_detail', kwargs={'pk':self.pk}) # args=[str(self.id)]
+
+    def save(self, *args, **kwargs): 
+        if not self.slug:
+            self.slug = slugify(self.title)
+        return super().save(*args, **kwargs)
 
 
 class Comment(models.Model):

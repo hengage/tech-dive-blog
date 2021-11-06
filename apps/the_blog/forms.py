@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import widgets
 
-from .models import Comment, Post, PostCategory, Comment
+from .models import Comment, Post, Comment
 from .choices import CATEGORY_CHOICES
 
 
