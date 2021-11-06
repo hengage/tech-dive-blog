@@ -12,18 +12,6 @@ from .forms import CommentForm, PostForm, UpdateForm
 def error_404(request, exception):
     return render(request, '404.html')
 
-class HomeView(ListView):
-    model = Post
-    template_name = 'home.html'
-    context_object_name = 'post_list'
-    #paginate_by = 2
-
-    def get_context_data(self, *args, **kwargs):
-        category_menu = PostCategory.objects.all()
-        context = super().get_context_data(*args, **kwargs)
-        context['category_menu'] = category_menu
-        return context
-
 class PostsCategoryMixin():
     """ Class to be used as a mixin to  get
     extra database content.
@@ -34,10 +22,19 @@ class PostsCategoryMixin():
         context = super().get_context_data(*args, **kwargs)
         context['category_menu'] = category_menu
         return context
+class HomeView(PostsCategoryMixin, ListView):
+    model = Post
+    template_name = 'home.html'
+    context_object_name = 'post_list'
+    #paginate_by = 2
 
+    # def get_context_data(self, *args, **kwargs):
+    #     category_menu = PostCategory.objects.all()
+    #     context = super().get_context_data(*args, **kwargs)
+    #     context['category_menu'] = category_menu
+    #     return context
 
-
-def ArticleDetailView(request, pk):
+def PostDetailView(request, pk):
     post = Post.objects.get(pk=pk)
 
     category_menu = PostCategory.objects.all()
@@ -128,6 +125,7 @@ class EditCategoryView(LoginRequiredMixin, PostsCategoryMixin, UpdateView):
     success_url = reverse_lazy('category_list')
 
 def CategoryView(request, cats):
+    # context_object_name = 'category_posts'
     category_posts = Post.objects.filter(category__iexact=cats.replace('-', ' '))
     context =  {
         'cats':cats.replace('-', ' '),

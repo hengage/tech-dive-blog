@@ -1,8 +1,5 @@
 from django.db import models
-#from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
-from django.db.models.deletion import CASCADE
-from django.db.models.fields import TextField
 from django.urls import reverse
 from django.conf import settings
 #from .choices import CATEGORY_CHOICES
@@ -15,19 +12,27 @@ class PostCategory(models.Model):
 
     def get_absolute_url(self):
         return reverse('home')
-
     class Meta:
         verbose_name = ("Posts' Category")
         verbose_name_plural = ("Posts' Categories")
 
+
 class Post(models.Model):
     title = models.CharField(max_length=255, unique=True)
     title_tag = models.CharField(max_length=255, unique=True)
+    category = models.ForeignKey(PostCategory, 
+        on_delete=models.PROTECT,
+        related_name='category',
+    )
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
-    author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, default='')
-    category = models.CharField(max_length=50, default='No category')
-    body = TextField()
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL, 
+        on_delete=models.CASCADE,
+        related_name='author',
+        default=''
+    )
+    body = models.TextField()
     likes = models.ManyToManyField(
         settings.AUTH_USER_MODEL,
         related_name='blog_posts',
@@ -50,7 +55,8 @@ class Comment(models.Model):
      on_delete=models.CASCADE,
     related_name='comments'
     )
-    commentator = models.ForeignKey(get_user_model(),
+    commentator = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE
     )
     comment_body = models.TextField(max_length=1000)
