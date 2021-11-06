@@ -7,7 +7,7 @@
     <h1 class="ms-2">Login</h1>
 
     {% if next %}
-      <p>Please login to see this page.</p>
+      <p class="ms-2 mt-4">Please login to see this page.</p>
     {% endif %}
 
 
@@ -36,7 +36,7 @@
           </div>
         </form>
         
-        <div class="forgot-password">
+        <div class="forgot-password mt-3">
           <p><a href="{% url 'password_reset' %}">Forgot my password</a></p>
         </div>
     </div>
