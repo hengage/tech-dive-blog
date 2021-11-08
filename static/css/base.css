@@ -58,7 +58,7 @@ a .stop-delete {
 
 .post-detail {
     width: 80%;
-    text-align: 
+    /* text-align:  */
 }
 
 .form-control {
@@ -130,9 +130,35 @@ form.comment_form {
     color: rgba(0, 0, 0, 0.9);
 }
 
+nav .container-fluid {
+    /* padding-left: 2em;
+    padding-right: 2em; */
+    padding: 0 2em 1.2em 2em;
+}
+
+nav 
+.navbar-brand:hover,
+.create-post-link:hover,
+.category-link:hover,
+.user-link:hover,
+.register-link:hover,
+.login-link:hover,
+.logout-link:hover
+    {
+    color: rgba(240, 240, 240, 0.9) !important;
+    /* color: rgba(255, 255, 0, 0.6) !important; */
+}
+
 /* Create-post.html */
 
 @media only screen and (max-width: 600px) {
+   
+    nav .container-fluid {
+        padding-left: 0.4em;
+        padding-right: 0.5em;
+    }
+
+
     section {
         width: 98%;
     }

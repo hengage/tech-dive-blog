@@ -5,9 +5,6 @@ from .views import (
      AddPostView, 
      UpdatePostView,
       DeletePostView, 
-      AddCategoryView, 
-      CategoryListView,
-      EditCategoryView,
       CategoryView,      
       )
 from .models import Post
@@ -17,10 +14,6 @@ post_detail_path = 'slug:slug'
 
 urlpatterns = [
     path('category/<str:cats>/', CategoryView, name='category') ,
-    path('edit_category/<int:pk>/', EditCategoryView.as_view(), name='edit_category'),
-    path('category_list/', CategoryListView.as_view(), name='category_list'),
-    path('add_category/', AddCategoryView.as_view(), name='add_category'),
-
 
     path('', HomeView.as_view(), name='home' ),
     path('article/<post_detail_path>', PostDetailView, name='article_detail'),

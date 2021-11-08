@@ -18,31 +18,36 @@
   <body>
 
     <nav 
-      class="navbar navbar-expand-lg navbar-light 
-      bg-light mb-4 ps-3 pe-3"
+      class="navbar navbar-expand-lg navbar-dark 
+      bg-dark mb-4"
     >
-      <div class="container-fluid">
-        <a class="navbar-brand  fw-bold" href="{% url 'home' %}">SOFTDEV</a>
+      <div class="container-fluid mt-1">
+        <a class="navbar-brand fw-bold me-4" href="{% url 'home' %}">SOFTDEV</a>
 
         <button 
-          class="navbar-toggler" type="button" 
+          class="navbar-toggler border border-light " type="button" 
           data-bs-toggle="collapse" 
           data-bs-target="#navbarSupportedContent" 
           aria-controls="navbarSupportedContent" 
           aria-expanded="false" 
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon "></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'create_post' %}">+ New Post</a>
+            <li class="nav-item ">
+              <a 
+                class="nav-link text-white me-4 create-post-link" 
+                href="{% url 'create_post' %}"
+              >
+                + New Post
+              </a>
             </li>
             {% if user.is_authenticated %}
             <li class="nav-item dropdown">
               <a 
-                class="nav-link dropdown-toggle" 
+                class="nav-link dropdown-toggle text-white me-4 category-link" 
                 href="#" id="navbarDropdown" 
                 role="button"
                 data-bs-toggle="dropdown" 
@@ -60,20 +65,20 @@
             </li>
             
             
+           
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'add_category' %}">Add Category</a>
+              <a class="nav-link text-white me-4 user-link" href="#">{{ user.username.title }}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">{{ user.username.title }}</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+              <a 
+                class="nav-link text-white me-4 logout-link"
+                href="{% url 'logout' %}">Logout</a>
             </li>
 
             {% else %}
             <li class="nav-item">
               <a 
-                class="nav-link" 
+                class="nav-link text-white me-4 register-link" 
                 href="{% url 'signup' %}"
               >
               Register
@@ -81,7 +86,7 @@
             </li>
             <li class="nav-item">
               <a 
-                class="nav-link" 
+                class="nav-link text-white me-4 login-link" 
                 href="{% url 'login' %}" 
                 tabindex="-1" 
                 aria-disabled="true"
@@ -99,7 +104,12 @@
               placeholder="Search"
               aria-label="Search"
             >
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            <button 
+              class="btn btn-outline-success bg-success text-white fw-bold"
+              type="submit"
+            >
+              Search
+            </button>
           </form>
         </div>
       </div>

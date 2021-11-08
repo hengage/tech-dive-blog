@@ -28,11 +28,6 @@ class HomeView(PostsCategoryMixin, ListView,):
     context_object_name = 'post_list'
     #paginate_by = 2
 
-    # def get_context_data(self, *args, **kwargs):
-    #     category_menu = PostCategory.objects.all()
-    #     context = super().get_context_data(*args, **kwargs)
-    #     context['category_menu'] = category_menu
-    #     return context
 
 def PostDetailView(request, pk):
     post = Post.objects.get(pk=pk)
@@ -104,26 +99,6 @@ class DeletePostView(UserPassesTestMixin, PostsCategoryMixin, DeleteView):
         return obj.author == self.request.user
 
 # Views for blog posts categories.
-class AddCategoryView(LoginRequiredMixin, PostsCategoryMixin, CreateView):
-    model = PostCategory
-    template_name = 'add_category.html'
-    fields = '__all__'
-    success_url = reverse_lazy('category_list')
-
-    # For login redirection.
-    login_url = '/account/login/'
-
-class CategoryListView(PostsCategoryMixin, ListView):
-    model = PostCategory
-    template_name = 'category_list.html'
-    context_object_name = 'category_list'
-
-class EditCategoryView(LoginRequiredMixin, PostsCategoryMixin, UpdateView):
-    model = PostCategory
-    template_name = 'edit_category.html'
-    fields = '__all__'
-    success_url = reverse_lazy('category_list')
-
 def CategoryView(request, cats):
     # context_object_name = 'category_posts'
     category_posts = Post.objects.filter(category__iexact=cats.replace('-', ' '))
