@@ -25,6 +25,7 @@ class Post(models.Model):
     category = models.ForeignKey(PostCategory, 
         on_delete=models.PROTECT,
         related_name='category',
+        default='django'
     )
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)

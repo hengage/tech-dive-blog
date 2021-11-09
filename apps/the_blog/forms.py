@@ -5,11 +5,8 @@ from .models import Comment, Post, Comment
 from .choices import CATEGORY_CHOICES
 
 
-class PostForm(forms.ModelForm):
-    """
-        A form class to create posts
-        
-    """
+class CreatePostForm(forms.ModelForm):
+
     #field_order = ['body', 'title', 'title_tag', 'author', 'category',]
 
     class Meta: 
@@ -24,16 +21,19 @@ class PostForm(forms.ModelForm):
                'title_tag': forms.TextInput(attrs={
                    'class':'form-control bigger-height'
                    }),
-               'author': forms.TextInput(attrs={'class':'form-control bigger-height',  'type':'hidden'}),
-               'category': forms.Select(choices=CATEGORY_CHOICES, attrs={'class':'form-control bigger-height'}),
-               'body': forms.Textarea(attrs={'class':'form-control', 'rows': 18}),
+               'author': forms.TextInput(attrs={
+                   'class':'form-control bigger-height',  'type':'hidden'
+                   }),
+               'category': forms.Select(choices=CATEGORY_CHOICES, attrs={
+                   'class':'form-control bigger-height'
+                   }),
+               'body': forms.Textarea(attrs={
+                   'class':'form-control', 'rows': 18
+                   }),
         }
 
 
-class UpdateForm(forms.ModelForm):
-    """
-        A form class to update posts
-    """
+class EditPostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ['title', 'title_tag', 'category', 'body',]
@@ -52,13 +52,8 @@ class UpdateForm(forms.ModelForm):
                    'class':'form-control', 'rows': 18
                    }),
         }
-
-        
-#class UpdateForm(PostForm):
- #   fields = ['title', 'title_tag', 'category',]
  
 class CommentForm(forms.ModelForm):
-
     class Meta:
         model = Comment
         fields = ['comment_body',]
@@ -68,7 +63,6 @@ class CommentForm(forms.ModelForm):
                 'class': 'add-comment-box',
                 # 'rows': 43,
                 # 'cols':59
-                
             })
         }
 

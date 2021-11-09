@@ -7,7 +7,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 
 from .models import Comment, Post, PostCategory
-from .forms import CommentForm, PostForm, UpdateForm 
+from .forms import CommentForm, CreatePostForm, EditPostForm 
 
 def error_404(request, exception):
     return render(request, '404.html')
@@ -72,15 +72,16 @@ def PostDetailView(request, slug):
 
 class AddPostView(LoginRequiredMixin,  PostsCategoryMixin, CreateView):
     model = Post
-    form_class = PostForm
+    form_class = CreatePostForm
     template_name = 'create_post.html'
 
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+        
 class UpdatePostView(UserPassesTestMixin, PostsCategoryMixin, UpdateView):
     model = Post
-    form_class = UpdateForm
+    form_class = EditPostForm
     template_name = 'update_post.html'
 
     def test_func(self):
