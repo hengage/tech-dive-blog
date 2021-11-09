@@ -19,7 +19,7 @@ class PostForm(forms.ModelForm):
 
         widgets ={
                'title': forms.TextInput(attrs={
-                   'class':'form-control bigger-height', 'placeholder':'title'
+                   'class':'form-control bigger-height'
                    }),
                'title_tag': forms.TextInput(attrs={
                    'class':'form-control bigger-height'
