@@ -12,9 +12,9 @@
         <ul>
             {% for post in category_posts %}
                 <li>
-                    <h5> <a href="{% url 'article_detail' post.pk %}">{{ post.title}}</a> -
+                    <h5> <a href="{% url 'article_detail' post.slug %}">{{ post.title}}</a> -
                         <small>
-                            <a href="{% url 'category' post.pk|slugify %}">{{ post.category }} |</a>
+                            <a href="{% url 'category' post.category|slugify %}">{{ post.category }} |</a>
                             {{ post.author.first_name.title }}
                             {{ post.author.last_name.title }}
                         </small>

@@ -29,8 +29,8 @@ class HomeView(PostsCategoryMixin, ListView,):
     #paginate_by = 2
 
 
-def PostDetailView(request, pk):
-    post = Post.objects.get(pk=pk)
+def PostDetailView(request, slug):
+    post = Post.objects.get(slug__iexact=slug)
 
     category_menu = PostCategory.objects.all()
 
@@ -40,7 +40,7 @@ def PostDetailView(request, pk):
 
     all_author_post = Post.objects.filter(
         author=post.author.id
-        ).exclude(pk=pk)
+        ).exclude(slug=slug)
 
     user = get_user_model()
 
@@ -100,11 +100,14 @@ class DeletePostView(UserPassesTestMixin, PostsCategoryMixin, DeleteView):
 
 # Views for blog posts categories.
 def CategoryView(request, cats):
-    # context_object_name = 'category_posts'
-    category_posts = Post.objects.filter(category__iexact=cats.replace('-', ' '))
+    category_menu = PostCategory.objects.all()
+    category_posts = Post.objects.filter(
+        category__name__iexact=cats.replace('-', ' ')
+        )
     context =  {
         'cats':cats.replace('-', ' '),
-        'category_posts':category_posts
+        'category_posts':category_posts,
+        'category_menu': category_menu
         }
     return render(request, 'categories.html', context)
 

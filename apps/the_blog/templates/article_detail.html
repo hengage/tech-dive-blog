@@ -26,8 +26,8 @@
 
               {% if user.id == post.author.id %}
                 <div>
-                    <a href="{% url 'edit_post' post.pk %}">Edit</a>
-                    <a href="{% url 'delete_post' post.pk %}">Delete</a>
+                    <a href="{% url 'edit_post' post.slug %}">Edit</a>
+                    <a href="{% url 'delete_post' post.slug %}">Delete</a>
                 </div>
               {% endif %}
             <hr>
@@ -95,7 +95,7 @@
          {{ post.author.last_name.title }}
      </h4>
      {% for post in all_author_post %}
-     <a href="{% url 'article_detail' post.pk%}">
+     <a href="{% url 'article_detail' post.slug%}">
          {{post.title}}
      </a>
      {% endfor %}

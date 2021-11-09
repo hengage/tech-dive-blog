@@ -49,7 +49,7 @@ class Post(models.Model):
 
 
     def get_absolute_url(self):
-        return reverse('article_detail', kwargs={'pk':self.pk}) # args=[str(self.id)]
+        return reverse('article_detail', kwargs={'slug':self.slug}) # args=[str(self.slug)]
 
     def save(self, *args, **kwargs): 
         if not self.slug:
