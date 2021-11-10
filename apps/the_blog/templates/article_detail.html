@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+
+{% load markdown_extras %}
 {% block title %} {{ post.title }} {% endblock title %}
 {% block content %}
 
@@ -33,7 +35,7 @@
             <hr>
             
             <div class="post-body" style="margin-top: 20px;">
-                {{ post.body|safe }}
+                {{ post.body|convert_markdown|safe }}
             </div>
         </div>
     </article>
