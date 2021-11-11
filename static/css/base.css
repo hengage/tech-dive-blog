@@ -150,6 +150,13 @@ nav
 }
 
 /* Create-post.html */
+textarea.markdownx-editor{
+    /* element and class derivded from dev tools
+    (markdownxfield) */
+    width: 70%;
+    margin-top: -0.8em;
+    margin-left: 0.3em;
+}
 
 @media only screen and (max-width: 600px) {
    
@@ -167,7 +174,7 @@ nav
         width: 91%;
     }
 
-    .form-control {
+    .form-control, textarea.markdownx-editor {
         width: 95%;
     }
 

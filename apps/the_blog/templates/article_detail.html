@@ -75,12 +75,19 @@
             </div>
         
             {% if user.is_authenticated %}
-            <button type="submit" class="btn btn-outline-success">
+            <button 
+                type="submit" 
+                class="btn btn-outline-success ms-1"
+            >
                 Post
             </button>
         
             {% else %} 
-            <button type="submit" class="btn btn-outline-success" disabled>
+            <button
+                type="submit" 
+                class="btn btn-outline-success" 
+                disabled
+            >
                 Post
             </button>
         
