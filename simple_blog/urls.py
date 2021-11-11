@@ -2,6 +2,9 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
 
+from markdownx import urls as markdownx
+
+
 
 urlpatterns = [
 
@@ -17,11 +20,14 @@ urlpatterns = [
         name = 'admin_password_reset'
     ),
 
-    # path('^markdown/', include( 'django_markdown.urls')),
-
-
+    # markdownx 
+    path('markdownx/', include(markdownx))
 ]
 
+
+# urlpatterns += [
+#     url(r'^markdownx/', include(markdownx))
+# ]
 
 
 handler404 = 'the_blog.views.error_404'
