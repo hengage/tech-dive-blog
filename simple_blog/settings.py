@@ -35,7 +35,7 @@ INSTALLED_APPS = [
 
     # 3rd party apps.
     'crispy_forms',
-    # 'django_markdown',
+    'markdownx',
 
 ]
 
@@ -149,4 +149,6 @@ sentry_sdk.init(
 
 
 django_heroku.settings(locals())
+
+MARKDOWNX_MARKDOWN_EXTENSIONS = ['fenced_code', 'codehilite']
 

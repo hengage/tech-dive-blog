@@ -3,6 +3,10 @@ from django.contrib.auth import get_user_model
 from django.urls import reverse
 from django.conf import settings
 from django.template.defaultfilters import slugify
+
+from markdownx.models import MarkdownxField
+from markdownx.utils import markdownify
+
 #from .choices import CATEGORY_CHOICES
 
 class PostCategory(models.Model):
@@ -35,7 +39,7 @@ class Post(models.Model):
         related_name='author',
         default=''
     )
-    body = models.TextField()
+    body = MarkdownxField()
     likes = models.ManyToManyField(
         settings.AUTH_USER_MODEL,
         related_name='blog_posts',
@@ -45,9 +49,12 @@ class Post(models.Model):
     class Meta:
         ordering = ['-date_created']
 
+
+    def formatted_markdown(self):
+        return markdownify(self.body)
+
     def __str__(self):
             return f"{self.title} | {str(self.author).title()}"
-
 
     def get_absolute_url(self):
         return reverse('article_detail', kwargs={'slug':self.slug}) # args=[str(self.slug)]
@@ -67,8 +74,11 @@ class Comment(models.Model):
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE
     )
-    comment_body = models.TextField(max_length=1000)
+    comment_body = MarkdownxField()
     timestamp = models.DateTimeField(auto_now_add=True)
+
+    def formatted_markdown(self):
+        return markdownify(self.comment_body)
 
     def __str__(self):
         return f"{self.comment_body}| {self.post}"

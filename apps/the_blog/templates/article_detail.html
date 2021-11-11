@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% load markdown_extras %}
+
 {% block title %} {{ post.title }} {% endblock title %}
 {% block content %}
 
@@ -35,7 +35,7 @@
             <hr>
             
             <div class="post-body" style="margin-top: 20px;">
-                {{ post.body|convert_markdown|safe }}
+                {{ post.formatted_markdown|safe }}
             </div>
         </div>
     </article>
@@ -48,7 +48,7 @@
                 {% for comment in comments.all %}
                 <div class="comment-body mb-4">
                     <strong>{{ comment.commentator}}</strong> 
-                    <div class="mb-2">{{ comment.comment_body }}</div>
+                    <div class="mb-2 mt-1">{{ comment.formatted_markdown|safe }}</div>
                     <p><small>{{ comment.timestamp }}</small></p>
                 </div>
                 
@@ -87,6 +87,9 @@
             <span>Log in to comment</span>
             {% endif %}
         </form>
+        <div class="div" style="width: 20%;">
+        {{ form.media }}
+        </div>
  </section>
 
  {% if all_author_post %}
