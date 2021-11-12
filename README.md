@@ -1,6 +1,6 @@
-# Simpleblog
+# Tech Dive Blo
 
-A simple, small web application blog built using Django Web Framework.
+A web application blog built using Django Web Framework.
 
 My aim was to keep it as simple as possible while also making it similar to a real blog.
 
