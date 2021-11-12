@@ -1,4 +1,4 @@
-# Tech Dive Blo
+# Tech Dive Blog
 
 A web application blog built using Django Web Framework.
 
