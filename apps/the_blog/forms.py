@@ -7,18 +7,18 @@ from .choices import CATEGORY_CHOICES
 
 class CreatePostForm(forms.ModelForm):
 
-    #field_order = ['body', 'title', 'title_tag', 'author', 'category',]
+    #field_order = ['body', 'title', 'description', 'author', 'category',]
 
     class Meta: 
         model = Post
-        fields = ['title', 'title_tag', 'category', 'body',]
+        fields = ['title', 'description', 'category', 'body',]
     
 
         widgets ={
                'title': forms.TextInput(attrs={
                    'class':'form-control bigger-height'
                    }),
-               'title_tag': forms.TextInput(attrs={
+               'description': forms.TextInput(attrs={
                    'class':'form-control bigger-height'
                    }),
                'author': forms.TextInput(attrs={
@@ -36,13 +36,13 @@ class CreatePostForm(forms.ModelForm):
 class EditPostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'title_tag', 'category', 'body',]
+        fields = ['title', 'description', 'category', 'body',]
 
         widgets ={
                'title': forms.TextInput(attrs={
                    'class':'form-control bigger-height'
                    }),
-               'title_tag': forms.TextInput(attrs={
+               'description': forms.TextInput(attrs={
                    'class':'form-control bigger-height'
                    }),
                'category': forms.Select(choices=CATEGORY_CHOICES, attrs={
