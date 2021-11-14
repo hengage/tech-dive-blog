@@ -9,6 +9,7 @@ My aim was to keep it as simple as possible while also making it similar to a re
   * postgresql database 
   * blog system - creating and deleting blog posts
   * a comment functionality so authenticated users can comment on posts
+  * markdown html text formatting
   
 Boostrap cdn was used for the styling, although I paid  less attention to the frontend part of 
 the project as my focus was on Django.
@@ -49,10 +50,6 @@ INSTALLED_APPS = [
 
 # If i had more time, I would:
   * add javascript funtionalities to the frontend
-  * work on the css
-  * refactor some of the code
-  * customize the admin area
-  * add markdown editor for blog post creation
   * add email verification for users upon signup
   * add a password change and password reset functionality
   
