@@ -2,44 +2,32 @@
 
 {% block content %}
 
-<div class="p-4">
-    {% if user.is_logout %}
-        <p>You have been logged out</p>
-    {% endif %}
+    
+<main class="container post-list">
 
-    {% if not user.is_anonymous %}
-    {{ get_username }}
-    {{ user.is_super }}
-    {% endif %}
-
-
-    <main class="container">
-
-        <ul class="list-group">
+        <ul >
             {% for post in post_list %} 
-                <li 
-                    class=
-                    "list-group-item d-flex justify-content-between align-items-start 
-                    mb-3"
-                >
-                    <h5>
+                <li class="mb-5">
+                    <h3>
                          <a href="{% url 'article_detail' post.slug %}"
-                            class="post-list"
+                            class="post-list-title"
                          >
                              {{ post.title}}
-                        </a> - 
-                        <small>
-                            <a href="{% url 'category' post.category|slugify %}">{{ post.category }}</a> |
-                            {{ post.author.first_name.title }} 
-                            {{ post.author.last_name.title }} 
-                        </small>
-                    </h5>
-                    <!-- {{ post.body.title|slice:":100"|safe }} -->
+                        </a> 
+                    </h3>
+                    <small>
+                        <a class="category-link" href="{% url 'category' post.category|slugify %}">{{ post.category }}</a> | 
+                        Author: {{ post.author.username }} 
+                    </small>
+                    <p class='mt-3 description'>{{ post.description }}</p>
+                    
+                    
+                        <!-- {{ post.author.last_name.title }}  -->                  
                 </li>
             {% endfor %}
         </ul>
-    </main>
-</div>
+</main>
+
 
 
 

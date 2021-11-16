@@ -7,7 +7,7 @@
 
 <section class="p-3 pt-1  mx-auto" ;>
 
-    <article class=" post-detail mt-3 mx-auto" style="width: 90%";>
+    <article class=" post-detail mt-3 " >
 
         <h1 class="post-title">{{ post.title.upper }}</h1>
         <h5 class="mb-4">
@@ -22,8 +22,10 @@
             
             <br>
                 Created: {{ post.date_created }}
+                {% if post.date_updated %}
                 <br>
                 Last updated: {{ post.date_updated }}
+                {% endif %}
             </small>
 
               {% if user.id == post.author.id %}
@@ -100,16 +102,17 @@
  </section>
 
  {% if all_author_post %}
- <div class="m-5">
+ <div >
      <h4>
          More Posts By 
-         {{ post.author.first_name.title }}
-         {{ post.author.last_name.title }}
+         {{ post.author.username }}
      </h4>
      {% for post in all_author_post %}
-     <a href="{% url 'article_detail' post.slug%}">
-         {{post.title}}
-     </a>
+     <div class="ms-4">
+        <a class="ms-4" href="{% url 'article_detail' post.slug%}">
+            {{post.title}}
+        </a>
+     </div
      {% endfor %}
  </div>
 {% endif %}

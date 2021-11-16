@@ -1,5 +1,21 @@
+:root {
+    --text-color: hsl(0, 0%, 40%);
+    --headers-color: hsl(0, 0%, 10%);
+  }
+
+
 body {
     background-color: aliceblue;
+    color: var(--text-color);
+    margin: 0;
+}
+
+img {
+    margin: 1em 0 1em 0;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    color: var(--headers-color);
 }
 
 a {
@@ -109,7 +125,7 @@ section {
 }
 
 .post-title {
-    letter-spacing: 0.2em;
+    letter-spacing: 0.1em;
 }
 
 small, .post-body {
@@ -126,8 +142,16 @@ form.comment_form {
     width: 90%;
 }
 
-.container a.post-list {
-    color: rgba(0, 0, 0, 0.9);
+.post-list {
+    /* background-color: rgb(179, 152, 185); */
+    width: calc(100% * 50%);
+    color: hsl(0, 0%, 40%);
+}
+
+
+
+.post-list .description {
+    width: calc(50% + 100px);
 }
 
 nav .container-fluid {
@@ -165,9 +189,26 @@ textarea.markdownx-editor{
         padding-right: 0.5em;
     }
 
+    img {
+        width: 100%;
+    }
+
+    .post-list ul{
+        margin-left: -0.2em;
+        /* background-color: chartreuse; */
+        padding: 0.23em;
+    }
+
 
     section {
-        width: 98%;
+        width: 100%;
+        padding: 1em;
+        /* background-color: darkcyan; */
+    }
+
+    article {
+        /* background-color: rgb(161, 161, 180); */
+        width: 100% !important;
     }
 
     .create-post {
