@@ -30,7 +30,7 @@
               {% if user.id == post.author.id %}
                 <div>
                     <a href="{% url 'edit_post' post.slug %}">Edit</a>
-                    <a href="{% url 'delete_post' post.slug %}">Delete</a>
+                    <a class="ms-3" href="{% url 'delete_post' post.slug %}">Delete</a>
                 </div>
               {% endif %}
             <hr>

@@ -1,0 +1,28 @@
+.codehilite {
+    background-color: #06243a;
+    line-height: 125%;
+    color: #fafafa;
+    font-style: italic;
+    padding: 1em;
+    margin-bottom: 0.8em;
+    /* overflow:auto; */
+}
+
+.codehilite pre span {
+    margin-bottom: 1em;
+    /* color: black; */
+}
+/* pre.codehilite { color: #eef0f1; font-style: italic } Comment */
+pre.codehilite { border: 1px solid #FF0000 } 
+
+@media only screen and (max-width: 600px){
+    pre.codehilite{
+        width: auto;
+    }
+}
+
+/* @media only screen and (max-width: 1800px) {
+    pre.codehilite{
+        width: 95%;
+    }
+} */

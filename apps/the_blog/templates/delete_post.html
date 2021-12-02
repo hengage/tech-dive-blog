@@ -13,19 +13,19 @@
             
                 <strong>Are you sure you want to delete the post '{{ post.title }}'?</strong>
                 
-                <div>
-                    <button class="btn-confirm-delete">Confirm </button>
+                <div class="mt-5">
+                    <button class="btn btn-danger">Confirm </button>
+
+                    <button 
+                        class="btn btn-primary ms-5 go-back-btn" 
+                        onclick="history.back()"
+                    >
+                        Go back
+                    </button>
                 </div>
+
             </form>
         </div>
-
-        <p>No i don't want to delete this.</p>
-
-        <a href="{% url 'article_detail' post.pk %}">
-            <button class="stop-delete">
-                Go back
-            </button>
-        </a>
     </div>
 
     {% else %}

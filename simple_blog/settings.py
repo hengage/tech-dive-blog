@@ -15,7 +15,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # DEBUG = config('DEBUG', default=False, cast=bool)
-DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = ['softdevblog.herokuapp.com', 'localhost', '127.0.0.1']
 
 # ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
