@@ -1,6 +1,6 @@
 from django.db.models.enums import Choices
 from django.test import TestCase
-from the_blog.forms import CreatePostForm
+from the_blog.forms import CreatePostForm, EditPostForm
 
 class TestCreatePostForm(TestCase):
 
@@ -35,3 +35,18 @@ class TestCreatePostForm(TestCase):
         self.assertEquals(len(form.errors), 4)
         self.assertFalse(form.is_valid())
 
+
+class TestEditPostForm(TestCase):
+
+    def setUp(self):
+        self.form = EditPostForm(data={
+            'title': 'post title',
+            'description': 'post description', 
+            'category': 'django',
+            'body': 'The body of the post',
+        })
+
+    def test_form_data_is_valid(self):
+        print(self.form.data)
+        print(self.form.errors)
+        self.assertTrue(self.form.is_valid())
