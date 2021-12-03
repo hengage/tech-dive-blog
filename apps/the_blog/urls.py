@@ -2,11 +2,11 @@ from django.urls import path
 from .views import (
     HomeView, 
     PostDetailView,
-     AddPostView, 
-     UpdatePostView,
-      DeletePostView, 
-      CategoryView,      
-      )
+    AddPostView, 
+    UpdatePostView,
+    DeletePostView, 
+    CategoryView,      
+)
 from .models import Post
 
 
