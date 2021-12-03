@@ -18,15 +18,19 @@ class CreatePostForm(forms.ModelForm):
                'title': forms.TextInput(attrs={
                    'class':'form-control bigger-height'
                    }),
+
                'description': forms.TextInput(attrs={
                    'class':'form-control bigger-height'
                    }),
+
                'author': forms.TextInput(attrs={
                    'class':'form-control bigger-height',  'type':'hidden'
                    }),
+
                'category': forms.Select(choices=CATEGORY_CHOICES, attrs={
                    'class':'form-control bigger-height'
                    }),
+
                'body': forms.Textarea(attrs={
                    'class':'form-control', 'rows': 18
                    }),
@@ -42,12 +46,15 @@ class EditPostForm(forms.ModelForm):
                'title': forms.TextInput(attrs={
                    'class':'form-control bigger-height'
                    }),
+
                'description': forms.TextInput(attrs={
                    'class':'form-control bigger-height'
                    }),
+
                'category': forms.Select(choices=CATEGORY_CHOICES, attrs={
                    'class':'form-control bigger-height'
                    }),
+                   
                'body': forms.Textarea(attrs={
                    'class':'form-control', 'rows': 18
                    }),

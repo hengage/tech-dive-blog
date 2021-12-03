@@ -14,15 +14,13 @@ class TestCustomUser(TestCase):
         
         self.user = CustomUser.objects.create(
             username = 'hengage',
-            date_of_birth = '1994-10-30',
             date_registered = DateTimeField(auto_now_add=True), 
-            gender = 'male',
         )
      
     def test_user_is_created_correctly(self):
         self.assertEquals(self.user.username, 'hengage')
         self.assertEquals(self.user.id, 1)
-        self.assertEquals(self.user.gender, 'male')
+        self.assertEquals(self.user.first_name, '')
 
         print('test_user_is_created_correctly')
    
