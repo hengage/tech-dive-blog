@@ -112,3 +112,8 @@ def CategoryView(request, cats):
         }
     return render(request, 'categories.html', context)
 
+class SearchPostsResultListView(ListView):
+    model = Post
+    context_object_name = 'posts_list'
+    template_name = 'search_result.html'
+

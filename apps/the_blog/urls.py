@@ -5,7 +5,8 @@ from .views import (
     AddPostView, 
     UpdatePostView,
     DeletePostView, 
-    CategoryView,      
+    CategoryView,
+    SearchPostsResultListView      
 )
 from .models import Post
 
@@ -19,5 +20,5 @@ urlpatterns = [
     path('article/<slug:slug>/delete_post/', DeletePostView.as_view(), name='delete_post'),
     path('article/edit_post/<slug:slug>/', UpdatePostView.as_view(), name='edit_post'),
     path('create_post/', AddPostView.as_view(), name='create_post'),
-
+    path('search/', SearchPostsResultListView.as_view(), name='posts_search_results'),
 ]
