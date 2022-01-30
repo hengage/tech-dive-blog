@@ -7,6 +7,7 @@ from django.template.defaultfilters import slugify
 from markdownx.models import MarkdownxField
 from markdownx.utils import markdownify
 
+from .managers import PostManager
 #from .choices import CATEGORY_CHOICES
 
 class PostCategory(models.Model):
@@ -45,6 +46,7 @@ class Post(models.Model):
         related_name='blog_posts',
         blank=True
         )
+    objects = PostManager()
 
     class Meta:
         ordering = ['-date_created']

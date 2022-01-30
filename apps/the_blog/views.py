@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+from django.http import request
 from django.http.response import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.shortcuts import render
@@ -113,7 +114,9 @@ def CategoryView(request, cats):
     return render(request, 'categories.html', context)
 
 class SearchPostsResultListView(ListView):
-    model = Post
-    context_object_name = 'posts_list'
+    context_object_name = 'post_list'
     template_name = 'search_result.html'
 
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        return Post.objects.search(query=query)

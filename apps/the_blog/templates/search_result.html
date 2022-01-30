@@ -5,7 +5,19 @@
 {% block content %}
 
 
-<h2> Results for</h2>
+<h2> Results for {{ query.query }}</h2>
+
+
+{% if post_list %}
+    {% for post in post_list %} 
+        {{ post.title }}
+    {% endfor %}
+{% else %}
+        <h2>Empty Search</h2>
+{% endif %}
+
+
+
 
 
 
