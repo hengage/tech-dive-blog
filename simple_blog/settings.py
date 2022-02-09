@@ -22,6 +22,11 @@ ALLOWED_HOSTS = ['softdevblog.herokuapp.com', 'localhost', '127.0.0.1']
 
 
 INSTALLED_APPS = [
+      # Created apps.
+    'the_blog.apps.TheBlogConfig',
+    'account.apps.AccountConfig',
+
+    # Django default apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -29,9 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # Created apps.
-    'the_blog.apps.TheBlogConfig',
-    'account.apps.AccountConfig',
+  
 
     # 3rd party apps.
     'crispy_forms',
