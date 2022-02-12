@@ -5,11 +5,13 @@ A web application blog built using Django Web Framework.
 My aim was to keep it as simple as possible while also making it similar to a real blog.
 
 # Features
-  * User authentication
+  * user authentication
   * postgresql database 
   * blog system - creating and deleting blog posts
   * a comment functionality so authenticated users can comment on posts
   * markdown html text formatting
+  * search for posts by post title and content
+  * password change and reset
   
 Boostrap cdn was used for the styling, although I paid  less attention to the frontend part of 
 the project as my focus was on Django.
@@ -36,6 +38,8 @@ The following code snipet allows the project to work just fine like nothing chan
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(BASE_DIR,'apps'))
 ```
+ 
+Situated at the top part of the settings file.
 All imports should be done like normal. Example:
 
  ```
@@ -47,10 +51,5 @@ INSTALLED_APPS = [
     ...
 ]
 ```
-
-# If i had more time, I would:
-  * add javascript funtionalities to the frontend
-  * add email verification for users upon signup
-  * add a password change and password reset functionality
   
 
