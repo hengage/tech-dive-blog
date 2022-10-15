@@ -4,7 +4,7 @@ from django.contrib.auth import views as auth_views
 from django.conf import settings 
 from django.conf.urls.static import static 
 
-from markdownx import urls as markdownx
+# from markdownx import urls as markdownx
 
 
 
@@ -23,7 +23,8 @@ urlpatterns = [
     ),
 
     # markdownx 
-    path('markdownx/', include(markdownx))
+    # path('markdownx/', include(markdownx))
+    path('markdownx/', include('markdownx.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
