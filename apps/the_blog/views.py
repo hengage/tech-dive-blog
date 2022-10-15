@@ -7,23 +7,14 @@ from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 
-from .models import Comment, Post, PostCategory
+from .models import Comment, Post
 from .forms import CommentForm, CreatePostForm, EditPostForm 
 
 def error_404(request, exception):
     return render(request, '404.html')
 
-class PostsCategoryMixin():
-    """ Class to be used as a mixin to  get
-    extra database content.
-    """
 
-    def get_context_data(self, *args, **kwargs):
-        category_menu = PostCategory.objects.all()
-        context = super().get_context_data(*args, **kwargs)
-        context['category_menu'] = category_menu
-        return context
-class HomeView(PostsCategoryMixin, ListView,):
+class HomeView(ListView):
     model = Post
     template_name = 'home.html'
     context_object_name = 'post_list'
@@ -32,9 +23,6 @@ class HomeView(PostsCategoryMixin, ListView,):
 
 def PostDetailView(request, slug):
     post = Post.objects.get(slug__iexact=slug)
-
-    category_menu = PostCategory.objects.all()
-
     comments = Comment.objects.filter(
         post=post.id
         ).order_by('-id')
@@ -64,14 +52,13 @@ def PostDetailView(request, slug):
     context = {
         'post':post,
         'all_author_post':all_author_post,
-        'category_menu':category_menu,
         'comments':comments,
         'comment_form':comment_form
         }
     template = 'article_detail.html'
     return render(request, template, context)
 
-class AddPostView(LoginRequiredMixin,  PostsCategoryMixin, CreateView):
+class AddPostView(LoginRequiredMixin, CreateView):
     model = Post
     form_class = CreatePostForm
     template_name = 'create_post.html'
@@ -80,7 +67,7 @@ class AddPostView(LoginRequiredMixin,  PostsCategoryMixin, CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
         
-class UpdatePostView(UserPassesTestMixin, PostsCategoryMixin, UpdateView):
+class UpdatePostView(UserPassesTestMixin, UpdateView):
     model = Post
     form_class = EditPostForm
     template_name = 'update_post.html'
@@ -89,7 +76,7 @@ class UpdatePostView(UserPassesTestMixin, PostsCategoryMixin, UpdateView):
         obj = self.get_object()
         return obj.author == self.request.user
 
-class DeletePostView(UserPassesTestMixin, PostsCategoryMixin, DeleteView):
+class DeletePostView(UserPassesTestMixin, DeleteView):
     model = Post
     template_name = 'delete_post.html'
     success_url = reverse_lazy('home')
@@ -100,18 +87,6 @@ class DeletePostView(UserPassesTestMixin, PostsCategoryMixin, DeleteView):
         obj = self.get_object()
         return obj.author == self.request.user
 
-# Views for blog posts categories.
-def CategoryView(request, cats):
-    category_menu = PostCategory.objects.all()
-    category_posts = Post.objects.filter(
-        category__name__iexact=cats.replace('-', ' ')
-        )
-    context =  {
-        'cats':cats.replace('-', ' '),
-        'category_posts':category_posts,
-        'category_menu': category_menu
-        }
-    return render(request, 'categories.html', context)
 
 class SearchPostsResultListView(ListView):
     context_object_name = 'post_list'

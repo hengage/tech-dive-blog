@@ -11,9 +11,7 @@
 
         <h1 class="post-title">{{ post.title.upper }}</h1>
         <h5 class="mb-4">
-            <a href="{% url 'category' post.category|slugify %}"> 
-                {{ post.category }} 
-            </a>
+           
         </h5>
             <small> 
                 By: {{ post.author.username }} |

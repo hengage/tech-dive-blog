@@ -5,15 +5,11 @@ from .views import (
     AddPostView, 
     UpdatePostView,
     DeletePostView, 
-    CategoryView,
     SearchPostsResultListView      
 )
-from .models import Post
-
 
 
 urlpatterns = [
-    path('category/<str:cats>/', CategoryView, name='category') ,
 
     path('', HomeView.as_view(), name='home' ),
     path('article/<slug:slug>', PostDetailView, name='article_detail'),

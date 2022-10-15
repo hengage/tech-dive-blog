@@ -8,30 +8,11 @@ from markdownx.models import MarkdownxField
 from markdownx.utils import markdownify
 
 from .managers import PostManager
-#from .choices import CATEGORY_CHOICES
-
-class PostCategory(models.Model):
-    name = models.CharField(max_length=50)
-
-    def __str__(self):
-            return f"{self.name}"
-
-    def get_absolute_url(self):
-        return reverse('home')
-    class Meta:
-        verbose_name = ("Posts' Category")
-        verbose_name_plural = ("Posts' Categories")
-
 
 class Post(models.Model):
     title = models.CharField(max_length=255, unique=True)
     description = models.CharField(max_length=255, unique=True)
     slug = models.SlugField(max_length=255, unique=True)
-    category = models.ForeignKey(PostCategory, 
-        on_delete=models.PROTECT,
-        related_name='category',
-        default='django'
-    )
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(

@@ -2,7 +2,6 @@ from django import forms
 from django.forms import widgets
 
 from .models import Comment, Post, Comment
-from .choices import CATEGORY_CHOICES
 
 
 class CreatePostForm(forms.ModelForm):
@@ -11,7 +10,7 @@ class CreatePostForm(forms.ModelForm):
 
     class Meta: 
         model = Post
-        fields = ['title', 'description', 'category', 'body',]
+        fields = ['title', 'description', 'body',]
     
 
         widgets ={
@@ -27,10 +26,6 @@ class CreatePostForm(forms.ModelForm):
                    'class':'form-control bigger-height',  'type':'hidden'
                    }),
 
-               'category': forms.Select(choices=CATEGORY_CHOICES, attrs={
-                   'class':'form-control bigger-height'
-                   }),
-
                'body': forms.Textarea(attrs={
                    'class':'form-control', 'rows': 18
                    }),
@@ -40,7 +35,7 @@ class CreatePostForm(forms.ModelForm):
 class EditPostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'description', 'category', 'body',]
+        fields = ['title', 'description', 'body',]
 
         widgets ={
                'title': forms.TextInput(attrs={
@@ -51,10 +46,6 @@ class EditPostForm(forms.ModelForm):
                    'class':'form-control bigger-height'
                    }),
 
-               'category': forms.Select(choices=CATEGORY_CHOICES, attrs={
-                   'class':'form-control bigger-height'
-                   }),
-                   
                'body': forms.Textarea(attrs={
                    'class':'form-control', 'rows': 18
                    }),
