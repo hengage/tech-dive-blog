@@ -1,4 +1,4 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block title %} Crreate an account {% endblock title %}
 
@@ -9,19 +9,48 @@
 
 
     <div class="form-group hero is-dark">
-        <form method="POST">
+        <form method="POST" novalidate>
             {% csrf_token %}
 
-            <!--{{ for.non_field.erros }}
-            {{ form.first_name.errors }}
-            <label for="{{ form.first_name.id_for_label }}" class="ms-1">:</label>
-            {{ form.first_name.label_tag}}
-            {{ form.address }}
-            {{ form.address.help_text}}-->
-    
 
-           {{ form.as_p}}
-             
+            <!-- <label for="{{ form.first_name.id_for_label }}" class="ms-1">
+                First name
+            </label> -->
+            <div>
+                {{ form.first_name.label_tag}}
+                {{ form.first_name }}
+                <div style="color: red;">
+                    {{ form.first_name.errors }}
+                </div>
+                <!-- {{ form.first_name.help_text}} -->
+            </div>
+
+
+            <div>
+                {{ form.last_name.label_tag}}
+                {{ form.last_name }}
+                <div style="color: red;">
+                    {{ form.last_name.errors }}
+                </div>
+            </div>
+
+            <div>
+                {{ form.email.label_tag}}
+                {{ form.email }}
+                <div style="color: red;">
+                    {{ form.email.errors }}
+                </div>
+            </div>
+
+            <div>
+                {{ form.password1.label_tag}}
+                {{ form.password1 }}
+                <div style="color: red;">
+                    {{ form.password1.errors }}
+                </div>
+            </div>
+
+
             <button class="btn btn-secondary">Create account</button>
         </form>
     </div>
