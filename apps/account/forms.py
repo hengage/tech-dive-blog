@@ -10,19 +10,21 @@ class CustomUserCreationForm(UserCreationForm):
         label='Password',
         widget=forms.PasswordInput(attrs={'class':'form-control',})
     )
+    password1 = None
+    password2 = None
             
     class Meta:
         model = CustomUser
         fields = ['first_name', 'last_name', 'email', ]
 
         widgets = {
-            'first_name': forms.TextInput(attrs={'class':'form-control'}),
+            'first_name': forms.TextInput(attrs={'class':'form-control', 'placeholder':'First name'}),
             'last_name': forms.TextInput(attrs={'class':'form-control'}),
             'email': forms.EmailInput(attrs={'class':'form-control'}),
         }
 
         help_texts = {
-            'username': None,
+            'first_name': 'Your first name',
         }
 
     field_order = [

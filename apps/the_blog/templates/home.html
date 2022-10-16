@@ -16,8 +16,7 @@
                         </a> 
                     </h3>
                     <small>
-                        <a class="category-link" href="{% url 'category' post.category|slugify %}">{{ post.category }}</a> | 
-                        Author: {{ post.author.username }} 
+                        Author: {{ post.author.first_name.title }} {{ post.author.last_name.title }} 
                     </small>
                     <p class='mt-3 description'>{{ post.description }}</p>
                     
