@@ -16,45 +16,40 @@
             <!-- <label for="{{ form.first_name.id_for_label }}" class="ms-1">
                 First name
             </label> -->
-            <!-- <div>
+            <div>
                 {{ form.first_name.label_tag}}
-
-                <div class="form-control">
-                    {{ form.first_name }}
-                </div>
+                {{ form.first_name }}
                 <div style="color: red;">
                     {{ form.first_name.errors }}
                 </div>
-                {{ form.first_name.help_text}}
-            </div> -->
+                <!-- {{ form.first_name.help_text}} -->
+            </div>
 
-<!-- 
+
             <div>
                 {{ form.last_name.label_tag}}
                 {{ form.last_name }}
                 <div style="color: red;">
                     {{ form.last_name.errors }}
                 </div>
-            </div> -->
+            </div>
 
-            <!-- <div>
+            <div>
                 {{ form.email.label_tag}}
                 {{ form.email }}
                 <div style="color: red;">
                     {{ form.email.errors }}
                 </div>
-            </div> -->
+            </div>
 
-            <!-- <div>
-                {{ form.password.label_tag}}
-                {{ form.password }}
+            <div>
+                {{ form.password1.label_tag}}
+                {{ form.password1 }}
                 <div style="color: red;">
-                    {{ form.password.errors }}
+                    {{ form.password1.errors }}
                 </div>
-            </div> -->
+            </div>
 
-
-            {{ form.as_p}}
 
             <button class="btn btn-secondary">Create account</button>
         </form>
