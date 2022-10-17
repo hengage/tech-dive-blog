@@ -7,121 +7,106 @@
 
 <section class="p-3 pt-1  mx-auto" ;>
 
-    <article class=" post-detail mt-3 " >
+    <article class=" post-detail mt-3 ">
 
         <h1 class="post-title">{{ post.title.upper }}</h1>
         <h5 class="mb-4">
-           
-        </h5>
-            <small> 
-                By: {{ post.author.first_name.title }} {{ post.author.last_name.title }} |
-                Email: {{ post.author.email }}
-            
-            <br>
-                Created: {{ post.date_created }}
-                {% if post.date_updated %}
-                <br>
-                Last updated: {{ post.date_updated }}
-                {% endif %}
-            </small>
 
-              {% if user.id == post.author.id %}
-                <div>
-                    <a href="{% url 'edit_post' post.slug %}">Edit</a>
-                    <a class="ms-3" href="{% url 'delete_post' post.slug %}">Delete</a>
-                </div>
-              {% endif %}
-            <hr>
-            
-            <div class="post-body" style="margin-top: 20px;">
-                {{ post.formatted_markdown|safe }}
-            </div>
+        </h5>
+        <small>
+            By: {{ post.author.first_name.title }} {{ post.author.last_name.title }} |
+            Email: {{ post.author.email }}
+
+            <br>
+            Created: {{ post.date_created }}
+            {% if post.date_updated %}
+            <br>
+            Last updated: {{ post.date_updated }}
+            {% endif %}
+        </small>
+
+        {% if user.id == post.author.id %}
+        <div>
+            <a href="{% url 'edit_post' post.slug %}">Edit</a>
+            <a class="ms-3" href="{% url 'delete_post' post.slug %}">Delete</a>
+        </div>
+        {% endif %}
+        <hr>
+
+        <div class="post-body" style="margin-top: 20px;">
+            {{ post.formatted_markdown|safe }}
+        </div>
         </div>
     </article>
 
-        <div class="cooments mt-5 mx-auto" style="width: 90%";">
-            <h3>Comments:</h3>  
-            <h6 class="mb-4">{{ comments.count }} comment{{ comments.all|pluralize }}</h6>
-        
-                {% if comments.all %}
-                {% for comment in comments.all %}
-                <div class="comment-body mb-4">
-                    <strong>{{ comment.commentator}}</strong> 
-                    <div class="mb-2 mt-1">{{ comment.formatted_markdown|safe }}</div>
-                    <p><small>{{ comment.timestamp }}</small></p>
-                </div>
-                
-                {% endfor %}  
-                
-                {% else %} 
-                <p>No comment yet. Be the first to add a comment</p>
-                {% endif %}
+    <div class="cooments mt-5 mx-auto" style="width: 90%" ;">
+        <h3>Comments:</h3>
+        <h6 class="mb-4">{{ comments.count }} comment{{ comments.all|pluralize }}</h6>
+
+        {% if comments.all %}
+        {% for comment in comments.all %}
+        <div class="comment-body mb-4">
+            <strong>{{ comment.commentator}}</strong>
+            <div class="mb-2 mt-1">{{ comment.formatted_markdown|safe }}</div>
+            <p><small>{{ comment.timestamp }}</small></p>
+            <hr>
         </div>
 
-        <form 
-            action="" method="POST" 
-            class="mx-auto comment_form mt-5" 
-            
+        {% endfor %}
+
+        {% else %}
+        <p>No comment yet. Be the first to add a comment</p>
+        {% endif %}
+    </div>
+
+    <form action="" method="POST" class="mx-auto comment_form mt-5">
+        {% csrf_token %}
+        <label for="{{ comment_form.comment_body.id_for_label }}">
+            Add comment:
+        </label>
+        <div class="add-comment mt-3 mb-3">
+            {{ comment_form.comment_body }}
+        </div>
+
+
+        <button 
+            type="submit" 
+            class="btn btn-outline-success" 
+            {% if user.is_anonymous %} disabled {% endif %}
         >
-            {% csrf_token %}
-            <label 
-                for="{{ comment_form.comment_body.id_for_label }}"
-            >
-                Add comment:
-            </label>
-            <div class="add-comment mt-3 mb-3">
-                {{ comment_form.comment_body }}
-            </div>
-        
-            {% if user.is_authenticated %}
-            <button 
-                type="submit" 
-                class="btn btn-outline-success ms-1"
-            >
-                Post
-            </button>
-        
-            {% else %} 
-            <button
-                type="submit" 
-                class="btn btn-outline-success" 
-                disabled
-            >
-                Post
-            </button>
-        
-            <span>Log in to comment</span>
-            {% endif %}
-        </form>
-        <div class="div" style="width: 20%;">
-        {{ form.media }}
-        </div>
- </section>
+            Post
+        </button>
 
- {% if all_author_post %}
- <div >
-     <h4>
-         More Posts By 
-         {{ post.author.username }}
-     </h4>
-     {% for post in all_author_post %}
-     <div class="ms-4">
+        {% if user.is_anonymous %}
+        <span>
+            <a href="{% url 'login' %}">Log in to comment</a>    
+        </span>
+        {% endif %}
+    </form>
+    <div class="div" style="width: 20%;">
+        {{ form.media }}
+    </div>
+</section>
+
+{% if all_author_post %}
+<div>
+    <h4>
+        More Posts By
+        {{ post.author.username }}
+    </h4>
+    {% for post in all_author_post %}
+    <div class="ms-4">
         <a class="ms-4" href="{% url 'article_detail' post.slug%}">
             {{post.title}}
         </a>
-     </div
-     {% endfor %}
- </div>
-{% endif %}
+    </div {% endfor %} </div>
+    {% endif %}
 
 
-<br>
-<button 
-    class="btn btn-primary m-5 mt-1 go-back-btn" 
-    onclick="history.back()"
->
-    Go back
-</button>
+    <br>
+    <button class="btn btn-primary m-5 mt-1 go-back-btn" onclick="history.back()">
+        Go back
+    </button>
 </div>
 
 
