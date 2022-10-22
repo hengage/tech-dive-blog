@@ -1,45 +1,56 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% block title %} Login into your account {% endblock title %}
 
 {% block content %}
 
 <div class="p-4">
-    <h1 class="ms-2">Login</h1>
+  <h1 class="ms-2">Login</h1>
 
-    {% if next %}
-      <p class="ms-2 mt-4">Please login to see this page.</p>
-    {% endif %}
+  {% if next %}
+  <p class="ms-2 mt-4">Please login to see this page.</p>
+  {% endif %}
 
 
-    <div class="form-group form-label">
-        <form method="POST">
-            {% csrf_token %}
-            
-            {% if form.errors %} 
-                <p class="mb-1"> Your email and/or password didn't match.</p>
-                <p class="mt-1">Note that both fields may be case-sensitive.</p>
-            {% endif %}
+  <div class="form-group form-label">
+    <form method="POST" novalidate>
+      {% csrf_token %}
 
-         <div class="form-label">
-           {{ form.username.errors }}
-           <label for="{{ form.username.id_for_label }}">Username:</label>
-           {{ form.username }} 
-         </div>
-         
-         <div class="form-label">
-           {{ form.password.label_tag }}
-           {{ form.password }}
-         </div>
+      {% if form.errors %}
+      <p class="mb-1"> Your email and/or password didn't match.</p>
+      <p class="mt-1">Note that both fields may be case-sensitive.</p>
+      {% endif %}
 
-          <div class="mt-3">
-            <button class="btn btn-secondary">Login</button>
-          </div>
-        </form>
+      <div class="form-lab">
+        {{ form.username.label_tag }}
+        {{ form.username }}
         
-        <div class="forgot-password mt-3">
-          <p><a href="{% url 'password_reset' %}">Forgot my password</a></p>
+        <div style="color: red;">
+          {% for error in form.username.errors %}
+          {{ error }}
+          {% endfor %}
         </div>
+      </div>
+
+      <div class="form-label">
+        {{ form.password.label_tag }}
+        {{ form.password }}
+
+        <div style="color: red;">
+          {% for error in form.password.errors %}
+          {{ error }}
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="mt-3">
+        <button class="btn btn-secondary">Login</button>
+      </div>
+    </form>
+
+    <div class="forgot-password mt-3">
+      <p><a href="{% url 'password_reset' %}">Forgot my password</a></p>
     </div>
+  </div>
 </div>
 
 {% endblock content %}
