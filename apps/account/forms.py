@@ -10,6 +10,7 @@ class CustomUserCreationForm(UserCreationForm):
         label='Password',
         widget=forms.PasswordInput(attrs={'class':'form-control'})
     )
+    password2 = None
             
     class Meta:
         model = CustomUser
