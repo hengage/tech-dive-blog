@@ -26,14 +26,14 @@
         </small>
 
         {% if user.id == post.author.id %}
-        <div>
+        <div class="mt-4">
             <a href="{% url 'edit_post' post.slug %}">
-                <button type="button" class="btn btn-primary ">
+                <button type="button" class="btn btn-primary w-25 py-2">
                     Edit
                 </button>
             </a>
 
-            <a class="btn btn-danger ms-3" data-bs-toggle="modal" data-bs-target="#delete-post-modal"
+            <a class="btn btn-danger ms-5 w-25 py-2" data-bs-toggle="modal" data-bs-target="#delete-post-modal"
                 href="{% url 'delete_post' post.slug %}" id="delete-post">
                 Delete
             </a>
@@ -53,7 +53,7 @@
                         </p>
 
                         <div class="mt-5 d-flex justify-content-between">
-                            <button type="submit" class="btn btn-danger">
+                            <button type="submit" class="btn btn-success">
                                 <!-- <a class="ms-3" href="{% url 'delete_post' post.slug %}"> -->
                                 Confirm
                                 <!-- </a> -->
