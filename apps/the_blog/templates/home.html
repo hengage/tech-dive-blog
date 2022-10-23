@@ -2,29 +2,32 @@
 
 
 {% block content %}
-    
-<main class=" post-list">
 
-        <ul >
-            {% for post in post_list %} 
-                <li class="mb-5">
-                    <h3 class="post-title">
-                         <a href="{% url 'article_detail' post.slug %}"
-                            class="post-list-title"
-                         >
-                             {{ post.title}}
-                        </a> 
+<main class=" post-list">
+    <div class="row">
+        {% for post in post_list %}
+        <div class="col-sm-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="post-title card-title">
+                        {{ post.title}}
                     </h3>
-                    <small>
-                        Author: {{ post.author.first_name.title }} {{ post.author.last_name.title }} 
-                    </small>
-                    <p class='mt-3 description'>{{ post.description }}</p>
-                    
-                    
-                        <!-- {{ post.author.last_name.title }}  -->                  
-                </li>
-            {% endfor %}
-        </ul>
+                    <p class="description card-text">
+                        <strong>Author:</strong>
+                        {{ post.author.first_name.title }} {{ post.author.last_name.title }}
+                    </p>
+                    <p class='mt- description card-text'>
+                        {{ post.description }}
+                    </p>
+
+                    <a href="{% url 'article_detail' post.slug %}" class="btn btn-primary">
+                        Read
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </main>
 
 
