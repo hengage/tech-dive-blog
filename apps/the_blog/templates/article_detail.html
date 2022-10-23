@@ -27,48 +27,41 @@
 
         {% if user.id == post.author.id %}
         <div>
-                <a href="{% url 'edit_post' post.slug %}">
-            <button type="button" class="btn btn-primary ">
+            <a href="{% url 'edit_post' post.slug %}">
+                <button type="button" class="btn btn-primary ">
                     Edit
-            </button>
-                </a>
+                </button>
+            </a>
 
-            <button type="button" class="btn btn-danger ms-3" 
-            data-bs-toggle="modal" data-bs-target="#myModal">
-            <!-- <a class="ms-3" href="{% url 'delete_post' post.slug %}" data-toggle="modal" data-target="#myModal"> -->
+            <a class="btn btn-danger ms-3" data-bs-toggle="modal" data-bs-target="#delete-post-modal"
+                href="{% url 'delete_post' post.slug %}" id="delete-post">
                 Delete
-            <!-- </a> -->
-          </button>
+            </a>
         </div>
         {% endif %}
         <hr>
-        
 
-        <div class="modal" id="myModal"  >
-            <div class="modal-dialog modal-dialog-centered modal-md" 
-            >
-                <div 
-                    class="modal-content ms-5 mx-aut py-3 px4" 
-                    style=" margin-right: 2em; max-width: 100%;"
-                >
-                    <form method="POST" class="mx-auto px-3" 
-                       
-                    >
+        <div class="" id="demo"></div>
+        <div class="modal fade" id="delete-post-modal">
+            <div class="modal-dialog modal-dialog-centered modal-md">
+                <div class="modal-content ms-5 mx-aut py-3 px4" style=" margin-right: 2em; max-width: 100%;">
+                    <form method="POST" class="mx-auto px-3" id="delete-post-form">
                         {% csrf_token %}
 
                         <p>
-                        <strong class="">Are you sure you want to delete '{{ post.title }}'?</strong>
+                            <strong class="">Are you sure you want to delete '{{ post.title }}'?</strong>
                         </p>
 
-                        <div class="mt-5 d-flex justify-content-between" >
+                        <div class="mt-5 d-flex justify-content-between">
                             <button type="submit" class="btn btn-danger">
-                                Confirm 
+                                <!-- <a class="ms-3" href="{% url 'delete_post' post.slug %}"> -->
+                                Confirm
+                                <!-- </a> -->
                             </button>
 
-                            <button type="button" class="btn btn-primary ms-5 go-back-btn" 
-                            data-bs-dismiss="modal"
-                            >
-                                Go back
+
+                            <button type="button" class="btn btn-primary ms-5 go-back-btn" data-bs-dismiss="modal">
+                                Cancel
                             </button>
                         </div>
                     </form>
