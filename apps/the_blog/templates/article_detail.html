@@ -27,11 +27,54 @@
 
         {% if user.id == post.author.id %}
         <div>
-            <a href="{% url 'edit_post' post.slug %}">Edit</a>
-            <a class="ms-3" href="{% url 'delete_post' post.slug %}">Delete</a>
+                <a href="{% url 'edit_post' post.slug %}">
+            <button type="button" class="btn btn-primary ">
+                    Edit
+            </button>
+                </a>
+
+            <button type="button" class="btn btn-danger ms-3" 
+            data-bs-toggle="modal" data-bs-target="#myModal">
+            <!-- <a class="ms-3" href="{% url 'delete_post' post.slug %}" data-toggle="modal" data-target="#myModal"> -->
+                Delete
+            <!-- </a> -->
+          </button>
         </div>
         {% endif %}
         <hr>
+        
+
+        <div class="modal" id="myModal"  >
+            <div class="modal-dialog modal-dialog-centered modal-md" 
+            >
+                <div 
+                    class="modal-content ms-5 mx-aut py-3 px4" 
+                    style=" margin-right: 2em; max-width: 100%;"
+                >
+                    <form method="POST" class="mx-auto px-3" 
+                       
+                    >
+                        {% csrf_token %}
+
+                        <p>
+                        <strong class="">Are you sure you want to delete '{{ post.title }}'?</strong>
+                        </p>
+
+                        <div class="mt-5 d-flex justify-content-between" >
+                            <button type="submit" class="btn btn-danger">
+                                Confirm 
+                            </button>
+
+                            <button type="button" class="btn btn-primary ms-5 go-back-btn" 
+                            data-bs-dismiss="modal"
+                            >
+                                Go back
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
         <div class="post-body" style="margin-top: 20px;">
             {{ post.formatted_markdown|safe }}
@@ -69,17 +112,13 @@
         </div>
 
 
-        <button 
-            type="submit" 
-            class="btn btn-outline-success" 
-            {% if user.is_anonymous %} disabled {% endif %}
-        >
+        <button type="submit" class="btn btn-outline-success" {% if user.is_anonymous %} disabled {% endif %}>
             Post
         </button>
 
         {% if user.is_anonymous %}
         <span>
-            <a href="{% url 'login' %}">Log in to comment</a>    
+            <a href="{% url 'login' %}">Log in to comment</a>
         </span>
         {% endif %}
     </form>

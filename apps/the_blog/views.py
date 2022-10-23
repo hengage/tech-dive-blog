@@ -78,7 +78,8 @@ class UpdatePostView(UserPassesTestMixin, UpdateView):
 
 class DeletePostView(UserPassesTestMixin, DeleteView):
     model = Post
-    template_name = 'delete_post.html'
+    # template_name = 'delete_post.html'
+    template_name = 'article_detail.html'
     success_url = reverse_lazy('home')
 
     # Forbid a user from editing and deleting posts they
