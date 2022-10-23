@@ -74,9 +74,17 @@ a .stop-delete {
     padding: 12px;
 }
 
+.post-list .post-title {
+    letter-spacing: 0.021em;
+}
+
 .post-detail {
     width: 80%;
     /* text-align:  */
+}
+
+.post-detail .post-title {
+    letter-spacing: 0.021em;
 }
 
 .form-control {
