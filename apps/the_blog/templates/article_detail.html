@@ -124,7 +124,7 @@
 <div>
     <h4>
         More Posts By
-        {{ post.author.username }}
+        {{ post.author.first_name }} {{ post.author.last_name }}
     </h4>
     {% for post in all_author_post %}
     <div class="ms-4">
