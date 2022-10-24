@@ -1,8 +1,7 @@
 # Tech Dive Blog
 
 A web application blog built using Django Web Framework.
-
-My aim was to keep it as simple as possible while also making it similar to a real blog.
+[https://techdive.herokuapp.com/](https://techdive.herokuapp.com/)
 
 # Features
   * user authentication
@@ -10,17 +9,15 @@ My aim was to keep it as simple as possible while also making it similar to a re
   * blog system - creating and deleting blog posts
   * a comment functionality so authenticated users can comment on posts
   * markdown html text formatting
-  * search for posts by post title and content
+  * search for posts by post title 
   * password change and reset
   
-Boostrap cdn was used for the styling, although I paid  less attention to the frontend part of 
-the project as my focus was on Django.
+Boostrap was used for the styling.
 
 For the views, I utilized the power of Class Based Views and the flexibility of Function Based Views
 
-# If you are interested in improving this project
 
-Just fork the project and clone into your local machine.
+Fork the project and clone into your local machine.
 
 Create  a virtual environment
 I used: <addr> python -m virtualenv virtualenv<addr> 
