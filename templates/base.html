@@ -51,18 +51,18 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white me-4 logout-link" href="{% url 'logout' %}">Logout</a>
+            <a class="nav-link text-white me-4 logout-link" href="{% url 'account_logout' %}">Logout</a>
           </li>
 
           {% else %}
           <li class="nav-item">
-            <a class="nav-link text-white me-4 register-link" href="{% url 'signup' %}">
+            <a class="nav-link text-white me-4 register-link" href="{% url 'account_signup' %}">
               Register
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link text-white me-4 login-link" href="{% url 'login' %}" tabindex="-1" aria-disabled="true">
+            <a class="nav-link text-white me-4 login-link" href="{% url 'account_login' %}" tabindex="-1" aria-disabled="true">
               Login
             </a>
           </li>

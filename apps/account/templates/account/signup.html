@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
+
+{% load i18n %}
+{% load account socialaccount %}
+
 {% block title %} Crreate an account {% endblock title %}
 
 {% block content %}
@@ -27,7 +31,7 @@
                 {{ form.last_name.label_tag}}
                 {{ form.last_name }}
 
-                 {% for error in form.last_name.errors %}
+                {% for error in form.last_name.errors %}
                 <div style="color: red;">
                     {{ error }}
                 </div>
@@ -49,7 +53,7 @@
                 {{ form.password1.label_tag}}
                 {{ form.password1 }}
 
-                 {% for error in form.password1.errors %}
+                {% for error in form.password1.errors %}
                 <div style="color: red;">
                     {{ error }}
                 </div>
@@ -57,11 +61,27 @@
             </div>
 
             <!-- {{ form.as_p }} -->
+            {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
 
 
             <button type="submit" class="btn btn-secondary">Create account</button>
         </form>
     </div>
+
+    <div class="login-or">{% trans 'or sign up with' %}</div
+  
+    <div class="socialaccount_ballot">
+    
+      <ul class="socialaccount_providers">
+        {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+      </ul>
+  
+    </div>
+  
+    {% include "socialaccount/snippets/login_extra.html" %}
+  
 </div>
 
 {% endblock content %}
