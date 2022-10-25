@@ -2,6 +2,7 @@ import os, sys
 from shutil import which
 from re import A
 from pathlib import Path
+from tkinter import TRUE
 
 from decouple import config, Csv
 import dj_database_url
@@ -185,11 +186,25 @@ ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5
 ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 300
 # ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
+# ACCOUNT_LOGOUT_ON_GET = TRUE
 
 ACCOUNT_SIGNUP_REDIRECT_URL = 'home'
 ACCOUNT_SIGNUP_FORM_CLASS = 'account.forms.CustomUserCreationForm'
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
 
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
+
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
+SITE_ID = 1
