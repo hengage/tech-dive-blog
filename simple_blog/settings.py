@@ -1,4 +1,6 @@
 import os, sys
+from shutil import which
+from re import A
 from pathlib import Path
 
 from decouple import config, Csv
@@ -34,11 +36,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-  
-
     # 3rd party apps.
     'crispy_forms',
     'markdownx',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.twitter',
 
 ]
 
@@ -128,7 +134,10 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'account.CustomUser'
+# I added a label to 'account.apps.AccountConfig' in because account app clashes with
+# allauth's account app and causes a duplicate error
+# As a result i refer to 'account' as 'users' here, which is the label
+AUTH_USER_MODEL = 'users.CustomUser'
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'login'
@@ -154,4 +163,14 @@ sentry_sdk.init(
 django_heroku.settings(locals())
 
 MARKDOWNX_MARKDOWN_EXTENSIONS = ['fenced_code', 'codehilite']
+
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
 
