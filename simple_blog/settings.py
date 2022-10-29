@@ -1,13 +1,9 @@
 import os, sys
-from shutil import which
-from re import A
 from pathlib import Path
-from tkinter import TRUE
 
-from decouple import config, Csv
+from decouple import config
 import dj_database_url
 import django_heroku
-from markdown import Markdown
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(BASE_DIR,'apps'))
@@ -194,7 +190,7 @@ ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5
 ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 300
 # ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
-ACCOUNT_LOGOUT_ON_GET = TRUE
+ACCOUNT_LOGOUT_ON_GET = True
 
 ACCOUNT_SIGNUP_REDIRECT_URL = 'home'
 ACCOUNT_SIGNUP_FORM_CLASS = 'account.forms.CustomUserCreationForm'
