@@ -18,7 +18,7 @@ class CustomUserAdmin(UserAdmin):
 
     fieldsets= [
         ("Basic User Details", {
-            "fields": ['email', 'first_name', 'last_name',]
+            "fields": ['email', 'first_name', 'last_name', 'password',]
         }),
 
         (
