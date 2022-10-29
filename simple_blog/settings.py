@@ -7,6 +7,7 @@ from tkinter import TRUE
 from decouple import config, Csv
 import dj_database_url
 import django_heroku
+from markdown import Markdown
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(BASE_DIR,'apps'))
@@ -125,13 +126,13 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_ROOT = STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles')) # os.path.join(BASE_DIR, '/static')
 STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+#  Media files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -163,6 +164,7 @@ sentry_sdk.init(
 
 django_heroku.settings(locals())
 
+# Markdownx styling
 MARKDOWNX_MARKDOWN_EXTENSIONS = ['fenced_code', 'codehilite']
 
 
@@ -175,7 +177,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 
-
+# Allauth settings
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED=True
 ACCOUNT_USER_MODEL_EMAIL_FIELD = 'email'

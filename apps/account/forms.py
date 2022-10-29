@@ -21,12 +21,3 @@ class CustomUserCreationForm(UserCreationForm):
             'last_name': forms.TextInput(attrs={'class':'form-control'}),
             'email': forms.EmailInput(attrs={'class':'form-control'}),
         }
-
-        # help_texts = {
-        #     'username': None,
-        # }
-
-    # field_order = [
-    #     'first_name',  'last_name', 'email',  'password1',
-    # ]
-        

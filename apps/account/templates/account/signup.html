@@ -60,9 +60,8 @@
                 {% endfor %}
             </div>
 
-            <!-- {{ form.as_p }} -->
             {% if redirect_field_value %}
-            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
             {% endif %}
 
 
@@ -70,7 +69,7 @@
         </form>
     </div>
 
-    <div class="login-or">{% trans 'or sign up with' %}</div
+    <div class="login-or">{% trans 'or sign up with' %}</div>
   
     <div class="socialaccount_ballot">
     
