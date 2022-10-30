@@ -42,7 +42,9 @@
           {% if user.is_authenticated %}
 
           <li class="nav-item">
-            <a class="nav-link text-white me-4 user-link" href="#">
+            <a 
+            class="nav-link text-white me-4 user-link" 
+            href="{% url 'update_user' user.id %}">
               {{ user.first_name.title }}
             </a>
           </li>

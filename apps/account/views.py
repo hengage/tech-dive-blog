@@ -11,7 +11,7 @@ User = get_user_model()
 class UpdateUserView(UpdateView):
     form_class = UpdateUserForm
     model = User
-    context_object_name = 'user'
+    context_object_name = 'current_user'
     template_name = 'user/update_user.html'
 
     def get_success_url(self):

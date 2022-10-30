@@ -6,7 +6,7 @@
 
 <h1>Update your details</h1>
 
-<h3>{{ user.first_name.title }} {{ user.last_name.title }}</h3>
+<h3>{{ request.user.first_name.title }} {{ request.user.last_name.title }}</h3>
 
 <form method="POST">
     {% csrf_token %}
