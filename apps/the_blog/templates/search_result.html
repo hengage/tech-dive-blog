@@ -5,15 +5,36 @@
 {% block content %}
 
 
-<h2> Results for {{ query.query }}</h2>
+<h2> Results for {{ query.title }}</h2>
 
 
 {% if post_list %}
-    {% for post in post_list %} 
-        {{ post.title }}
+    {% for post in post_list %}
+        <div class="row">
+            <div class="col-sm-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="post-title card-title">
+                            {{ post.title}}
+                        </h3>
+                        <p class="description card-text">
+                            <strong>Author:</strong>
+                            {{ post.author.first_name.title }} {{ post.author.last_name.title }}
+                        </p>
+                        <p class='mt- description card-text'>
+                            {{ post.description }}
+                        </p>
+
+                        <a href="{% url 'article_detail' post.slug %}" class="btn btn-primary">
+                            Read
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     {% endfor %}
 {% else %}
-        <h2>Empty Search</h2>
+    <h2>Empty Search</h2>
 {% endif %}
 
 
