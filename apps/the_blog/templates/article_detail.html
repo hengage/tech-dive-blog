@@ -70,7 +70,8 @@
         </div>
 
         <div class="post-body" style="margin-top: 20px;">
-            {{ post.formatted_markdown|safe }}
+            <!-- {{ post.formatted_markdown|safe }} -->
+            {{ post.body | safe}}
         </div>
         </div>
     </article>

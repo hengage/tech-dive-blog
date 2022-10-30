@@ -13,6 +13,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('the_blog.urls')),
     path('accounts/', include('allauth.urls')),
+    path('user/', include('account.urls')),
 
     # Password reset for admin.
     path(

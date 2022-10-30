@@ -1,7 +1,9 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import get_user_model
 from .models import CustomUser
 
+User = get_user_model()
 class CustomUserCreationForm(UserCreationForm):
 
     # password is a "custom" field on the UserCreationForm, since it does not exist as a model field on the User model. 
@@ -21,3 +23,9 @@ class CustomUserCreationForm(UserCreationForm):
             'last_name': forms.TextInput(attrs={'class':'form-control'}),
             'email': forms.EmailInput(attrs={'class':'form-control'}),
         }
+
+
+class UpdateUserForm(forms.ModelForm):
+    class Meta:
+        model  = CustomUser
+        fields = ['first_name', 'last_name', 'email']
