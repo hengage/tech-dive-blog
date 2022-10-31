@@ -8,29 +8,42 @@
 
 {% get_providers as socialaccount_providers %}
 
-<div class="p-4">
-  <h1 class="ms-2">Login</h1>
+<div class="p-2 mt-5 container" styl="border: 2px solid black;">
+  <div class="container d-flex align-items-center jstify-content-center flex-column" styl="border: 2px solid blue">
 
 
   {% if socialaccount_providers %}
-    <p>{% blocktrans with site.name as site_name %}Please sign in with one
-    of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
-    for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
+  <div class="row">
 
-    <div class="socialaccount_ballot">
+    <h2 class="col-md-8 offset-md-2 text-center" styl="border: 1px dotted green;">
+      Welcome, please sign in to your  {% blocktrans with site.name as site_name %} {{ site_name }} account.
+     {% endblocktrans %}</h2>
+  </div>
 
-      <ul class="socialaccount_providers">
-        {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+
+    <div class="socialaccoun_ballot container text-center" styl="border: 2px dashed red;">
+
+      <ul class="socialaccoun_provider row">
+        <li class="col" styl="border: 2px dotted gray;">{% include "socialaccount/snippets/provider_list.html" with process="login" %}</li>
       </ul>
 
-      <div class="login-or">{% trans 'or' %}</div>
+      <div class="mb-3 text-uppercase" styl="border: 1px solid orange;">
+        <p class="text-center ms-4">{% trans 'or' %}</div></p>
 
     </div>
+    <!-- <div class=" container text-center" style="border: 2px dashed red;">
+
+      <div class="row">
+      <div class="col">ppppppppppp</div>
+      <div class="col">ppppppppppp</div>
+      <div class="col">ppppppppppp</div>
+    </div>
+    </div> -->
 
     {% include "socialaccount/snippets/login_extra.html" %}
 
   {% else %}
-    <p>{% blocktrans %}If you have not created an account yet, then please
+    <p class="">{% blocktrans %}If you have not created an account yet, then please
       <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}
     </p>
   {% endif %}
@@ -42,8 +55,8 @@
   {% endif %}
 
 
-  <div class="form-group form-label">
-    <form method="POST" novalidate>
+  <div class="form-group form-label" styl="border: 1px solid red;">
+    <form method="POST" novalidate styl="border: 3px solid yellow;">
       {% csrf_token %}
 
       {% if form.errors %}
@@ -51,7 +64,7 @@
         <p class="mt-1">Note that both fields may be case-sensitive.</p>
       {% endif %}
 
-      <div class="form-lab">
+      <div class="form-labe">
         {{ form.login.label_tag }}
         {{ form.login }}
 
@@ -83,6 +96,7 @@
       <p><a href="{% url 'account_reset_password' %}">Forgot my password</a></p>
     </div>
   </div>
+</div>
 </div>
 
 {% endblock content %}
