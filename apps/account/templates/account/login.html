@@ -66,7 +66,7 @@
 
       <div class="form-labe">
         {{ form.login.label_tag }}
-        {{ form.login }}
+        <input type="email" class="" id="id_login" name="login">
 
         <div style="color: red;">
           {% for error in form.username.errors %}
@@ -77,7 +77,7 @@
 
       <div class="form-label">
         {{ form.password.label_tag }}
-        {{ form.password }}
+        <input type="password" class="" id="id_password" name="password">
 
         <div style="color: red;">
           {% for error in form.password.errors %}
@@ -86,15 +86,17 @@
         </div>
       </div>
 
+      <div class="forgot-password mt-3">
+        <p><a href="{% url 'account_reset_password' %}">Forgot my password</a></p>
+      </div>
+
 
       <div class="mt-3">
         <button class="btn btn-secondary">Login</button>
       </div>
     </form>
 
-    <div class="forgot-password mt-3">
-      <p><a href="{% url 'account_reset_password' %}">Forgot my password</a></p>
-    </div>
+    
   </div>
 </div>
 </div>
