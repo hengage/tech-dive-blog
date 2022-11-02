@@ -10,22 +10,22 @@
 
 {% if post_list %}
     {% for post in post_list %}
-        <div class="row">
-            <div class="col-sm-6 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h3 class="post-title card-title">
+        <div class="">
+            <div class="">
+                <div class="">
+                    <div class="">
+                        <h3 class="">
                             {{ post.title}}
                         </h3>
-                        <p class="description card-text">
+                        <p class="">
                             <strong>Author:</strong>
                             {{ post.author.first_name.title }} {{ post.author.last_name.title }}
                         </p>
-                        <p class='mt- description card-text'>
+                        <p class=''>
                             {{ post.description }}
                         </p>
 
-                        <a href="{% url 'article_detail' post.slug %}" class="btn btn-primary">
+                        <a href="{% url 'article_detail' post.slug %}" class="">
                             Read
                         </a>
                     </div>

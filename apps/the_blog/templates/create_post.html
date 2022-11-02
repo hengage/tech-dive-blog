@@ -6,18 +6,18 @@
 
 {% if user.is_authenticated %}
     <div 
-        class="form-group p-3 m-3 mt-1 create-post" 
+        class="" 
     >
 
-        <h2 class="mb-4">Add A New Post</h2>
+        <h2 class="">Add A New Post</h2>
 
         <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}
-            <button class="btn btn-success">Submit Post</button>
+            <button class="">Submit Post</button>
         </form>
         
-        <div class="preview">
+        <div class="">
         <p></p>
         {{ form.media }}
         </div>

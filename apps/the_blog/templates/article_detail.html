@@ -5,12 +5,12 @@
 {% block content %}
 
 
-<section class="p-3 pt-1  mx-auto" ;>
+<section class="" ;>
 
-    <article class=" post-detail mt-3 ">
+    <article class="">
 
-        <h1 class="post-title font-monospac">{{ post.title.upper }}</h1>
-        <h5 class="mb-4">
+        <h1 class="">{{ post.title.upper }}</h1>
+        <h5 class="">
 
         </h5>
         <small>
@@ -26,14 +26,14 @@
         </small>
 
         {% if user.id == post.author.id %}
-        <div class="mt-4">
+        <div class="">
             <a href="{% url 'edit_post' post.slug %}">
-                <button type="button" class="btn btn-primary w-25 py-2">
+                <button type="button" class="">
                     Edit
                 </button>
             </a>
 
-            <a class="btn btn-danger ms-5 w-25 py-2" data-bs-toggle="modal" data-bs-target="#delete-post-modal"
+            <a class=""
                 href="{% url 'delete_post' post.slug %}" id="delete-post">
                 Delete
             </a>
@@ -41,26 +41,25 @@
         {% endif %}
         <hr>
 
-        <div class="" id="demo"></div>
-        <div class="modal fade" id="delete-post-modal">
-            <div class="modal-dialog modal-dialog-centered modal-md">
-                <div class="modal-content ms-5 mx-aut py-3 px4" style=" margin-right: 2em; max-width: 100%;">
-                    <form method="POST" class="mx-auto px-3" id="delete-post-form">
+        <div class="" id="delete-post-modal">
+            <div class="">
+                <div class="" style=" margin-right: 2em; max-width: 100%;">
+                    <form method="POST" class="" id="delete-post-form">
                         {% csrf_token %}
 
                         <p>
                             <strong class="">Are you sure you want to delete '{{ post.title }}'?</strong>
                         </p>
 
-                        <div class="mt-5 d-flex justify-content-between">
-                            <button type="submit" class="btn btn-success">
+                        <div class="">
+                            <button type="submit" class="">
                                 <!-- <a class="ms-3" href="{% url 'delete_post' post.slug %}"> -->
                                 Confirm
                                 <!-- </a> -->
                             </button>
 
 
-                            <button type="button" class="btn btn-primary ms-5 go-back-btn" data-bs-dismiss="modal">
+                            <button type="button" class="">
                                 Cancel
                             </button>
                         </div>
@@ -69,22 +68,22 @@
             </div>
         </div>
 
-        <div class="post-body" style="margin-top: 20px;">
+        <div class="" style="margin-top: 20px;">
             <!-- {{ post.formatted_markdown|safe }} -->
             {{ post.body | safe}}
         </div>
         </div>
     </article>
 
-    <div class="cooments mt-5 mx-auto" style="width: 90%" ;">
+    <div class="" style="width: 90%" ;">
         <h3>Comments:</h3>
-        <h6 class="mb-4">{{ comments.count }} comment{{ comments.all|pluralize }}</h6>
+        <h6 class="">{{ comments.count }} comment{{ comments.all|pluralize }}</h6>
 
         {% if comments.all %}
         {% for comment in comments.all %}
-        <div class="comment-body mb-4">
+        <div class="">
             <strong>{{ comment.commentator}}</strong>
-            <div class="mb-2 mt-1">{{ comment.formatted_markdown|safe }}</div>
+            <div class="">{{ comment.formatted_markdown|safe }}</div>
             <p><small>{{ comment.timestamp }}</small></p>
             <hr>
         </div>
@@ -96,17 +95,17 @@
         {% endif %}
     </div>
 
-    <form action="" method="POST" class="mx-auto comment_form mt-5">
+    <form action="" method="POST" class="">
         {% csrf_token %}
         <label for="{{ comment_form.comment_body.id_for_label }}">
             Add comment:
         </label>
-        <div class="add-comment mt-3 mb-3">
+        <div class="">
             {{ comment_form.comment_body }}
         </div>
 
 
-        <button type="submit" class="btn btn-outline-success" {% if user.is_anonymous %} disabled {% endif %}>
+        <button type="submit" class="" {% if user.is_anonymous %} disabled {% endif %}>
             Post
         </button>
 
@@ -116,7 +115,7 @@
         </span>
         {% endif %}
     </form>
-    <div class="div" style="width: 20%;">
+    <div class="" style="width: 20%;">
         {{ form.media }}
     </div>
 </section>
@@ -128,8 +127,8 @@
         {{ post.author.first_name }} {{ post.author.last_name }}
     </h4>
     {% for post in all_author_post %}
-    <div class="ms-4">
-        <a class="ms-4" href="{% url 'article_detail' post.slug%}">
+    <div class="">
+        <a class="" href="{% url 'article_detail' post.slug%}">
             {{post.title}}
         </a>
     </div {% endfor %} </div>
@@ -137,7 +136,7 @@
 
 
     <br>
-    <button class="btn btn-primary m-5 mt-1 go-back-btn" onclick="history.back()">
+    <button class="" onclick="history.back()">
         Go back
     </button>
 </div>

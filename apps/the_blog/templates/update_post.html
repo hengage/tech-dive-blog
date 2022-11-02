@@ -5,17 +5,17 @@
 {% block content %}
 
 {% if user.is_authenticated %}
-    <div class="p-4 mt-1">
+    <div class="">
         <h2>Update Post</h2>
 
-        <div class="form-group">
+        <div class="">
             <form method="POST">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <button class="btn btn-success">Update</button>
+                <button class="">Update</button>
             </form>
 
-            <div class="preview">
+            <div class="">
             <p></p>
             {{ form.media }}
         </div>
