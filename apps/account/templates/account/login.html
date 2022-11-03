@@ -8,38 +8,31 @@
 
 {% get_providers as socialaccount_providers %}
 
-<div class="" styl="border: 2px solid black;">
-  <div class="" styl="border: 2px solid blue">
+<div class="px-12" tyle="border: 6px solid red;">
+  <div class="container-sm mt-7 mx-auto" tyle="border: 2px solid blue">
 
 
   {% if socialaccount_providers %}
-  <div class="">
+  <div class="px-">
 
-    <h2 class="" styl="border: 1px dotted green;">
+    <h2 class="text-center text-2xl font-bold px-" style="border: 1px dotted green;">
       Welcome, please sign in to your  {% blocktrans with site.name as site_name %} {{ site_name }} account.
      {% endblocktrans %}</h2>
   </div>
 
 
-    <div class="socialaccoun_ballot" styl="border: 2px dashed red;">
+    <div class="text-center mt-8" styl="border: 2px dashed red;">
 
-      <ul class="socialaccoun_provider row">
+      <ul class="">
         <li class="" styl="border: 2px dotted gray;">{% include "socialaccount/snippets/provider_list.html" with process="login" %}</li>
       </ul>
 
       <div class="" styl="border: 1px solid orange;">
         <p class="">{% trans 'or' %}</div></p>
-
     </div>
 
     {% include "socialaccount/snippets/login_extra.html" %}
-
-  {% else %}
-    <p class="">{% blocktrans %}If you have not created an account yet, then please
-      <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}
-    </p>
   {% endif %}
-
 
 
   {% if next %}
@@ -47,8 +40,8 @@
   {% endif %}
 
 
-  <div class="" styl="border: 1px solid red;">
-    <form method="POST" novalidate styl="border: 3px solid yellow;">
+  <div class="mt-16 flex justify-center items-center flex-col" tyle="border: 3.5px dashed orange;">
+    <form method="POST" novalidate tyle="border: 3px solid yellow;" class=" w-2/4 flex justify-center items-center flex-col">
       {% csrf_token %}
 
       {% if form.errors %}
@@ -56,36 +49,50 @@
         <p class="">Note that both fields may be case-sensitive.</p>
       {% endif %}
 
-      <div class="">
-        {{ form.login.label_tag }}
-        <input type="email" class="" id="id_login" name="login">
+      <div class="space-y-4 w-2/4" tyle="border: 2px dashed blue;">
+        <div class="">
+          <div class="mb-1">
+          {{ form.login.label_tag }}
+        </div>
+        
+          <input type="email" class="rounded-md w-full bg-gray-50 focus:bg-white border-gray-300" id="id_login" name="login">
 
-        <div style="color: red;">
-          {% for error in form.username.errors %}
+          <div style="color: red;">
+            {% for error in form.username.errors %}
+              {{ error }}
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="">
+          <div class="mb-1">
+          {{ form.password.label_tag }}
+          <span class="text-sm underline">
+          <a href="{% url 'account_reset_password' %}">Forgot?</a>
+        </span>
+        </div>
+        
+          <input type="password" class="rounded-md w-full bg-gray-50 focus:bg-white border-gray-300" id="id_password" name="password">
+
+          <div style="color: red;">
+            {% for error in form.password.errors %}
             {{ error }}
-          {% endfor %}
+            {% endfor %}
+          </div>
         </div>
-      </div>
+    </div>
 
-      <div class="">
-        {{ form.password.label_tag }}
-        <input type="password" class="" id="id_password" name="password">
-
-        <div style="color: red;">
-          {% for error in form.password.errors %}
-          {{ error }}
-          {% endfor %}
-        </div>
-      </div>
-
-      <div class="forgot-password mt-3">
+      <!-- <div class="forgot-password mt-3">
         <p><a href="{% url 'account_reset_password' %}">Forgot my password</a></p>
-      </div>
+      </div> -->
 
+      <!-- <div class="" style="border: 1px solid gray;"> -->
+        <button class="bg-green-600 text-white px-4 py-3 w-2/4 rounded-lg mt-4">Login</button>
 
-      <div class="">
-        <button class="">Login</button>
-      </div>
+        <p class="mt-5 text-sm"  tyle="border: 1px dotted gray">Don't have an account? 
+          <a class="underline" href="{% url 'account_signup' %}">Sign up</a>
+        </p>
+      <!-- </div> -->
     </form>
 
     
