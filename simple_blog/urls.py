@@ -22,6 +22,8 @@ urlpatterns = [
         name = 'admin_password_reset'
     ),
 
+    path("__reload__/", include("django_browser_reload.urls")),
+
     # markdownx 
     path('markdownx/', include(markdownx))
     # path('markdownx/', include('markdownx.urls'))

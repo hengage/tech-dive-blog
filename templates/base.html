@@ -1,5 +1,6 @@
 {% load static %}
 {% load i18n %}
+{% load django_browser_reload %}
 
 <!doctype html>
 <html lang="en">
@@ -159,7 +160,7 @@
 
   <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
 
-
+  {% django_browser_reload_script %}
 
 </body>
 
