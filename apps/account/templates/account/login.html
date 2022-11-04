@@ -12,7 +12,6 @@
 <div class="px-12" tyle="border: 6px solid red;">
   <div class="container-sm mt-7 mx-auto" tyle="border: 2px solid blue">
 
-
   {% if socialaccount_providers %}
   <div class="px-">
 
@@ -23,9 +22,6 @@
 
 
     <div class="text-center mt-12" styl="border: 2px dashed red;">
-
-      <ul class="">
-        <li class="" styl="border: 2px dotted gray;">
           <a 
             class="border-2 border-gray-200 rounded-md px-4 py-2.5" 
             styl="border: 2px solid blue;" 
@@ -39,11 +35,8 @@
             >
             Login with Google
           </a>
-        </li>
 
-      </ul>
-
-        <p class="mt-7 uppercase">{% trans 'or' %}</div></p>
+        <p class="mt-7 uppercase">{% trans 'or' %}</p>
     </div>
 
     {% include "socialaccount/snippets/login_extra.html" %}
@@ -55,67 +48,66 @@
   {% endif %}
 
 
-  <div class="mt-12 flex justify-center items-center flex-col" tyle="border: 3.5px dashed orange;">
-    <h2 class="text-2xl">Sign in with email</h2>
-    <form method="POST" novalidate 
-    class=" w-2/4 flex justify-center items-center flex-col mt-4"
-    tyle="border: 3px solid yellow;">
-      {% csrf_token %}
+    <div class="mt-12 flex justify-center items-center flex-col" tyle="border: 3.5px dashed orange;">
+      <h2 class="text-2xl">Sign in with email</h2>
+      <form
+        method="POST" 
+        novalidate 
+        class=" w-2/4 flex justify-center items-center flex-col mt-4"
+        tyle="border: 3px solid yellow;"
+      >
+        {% csrf_token %}
 
-      {% if form.errors %}
-        <p class=""> Your email and/or password didn't match.</p>
-        <p class="">Note that both fields may be case-sensitive.</p>
-      {% endif %}
+        {% if form.errors %}
+          <p class=""> Your email and/or password didn't match.</p>
+          <p class="">Note that both fields may be case-sensitive.</p>
+        {% endif %}
 
-      <div class="space-y-4 w-2/4" tyle="border: 2px dashed blue;">
-        <div class="">
-          <div class="mb-1">
-          {{ form.login.label_tag }}
-        </div>
-        
-          <input type="email" class="rounded-md w-full bg-gray-50 focus:bg-white border-gray-300" id="id_login" name="login">
+        <div class="space-y-4 w-2/4" tyle="border: 2px dashed blue;">
+          <div class="">
+            <div class="mb-1">
+            {{ form.login.label_tag }}
+            </div>
+          
+            <input type="email" class="rounded-md w-full bg-gray-50 focus:bg-white border-gray-300" id="id_login" name="login">
 
-          <div style="color: red;">
-            {% for error in form.username.errors %}
+            <div style="color: red;">
+              {% for error in form.username.errors %}
+                {{ error }}
+              {% endfor %}
+            </div>
+          </div>
+
+          <div class="">
+            <div class="mb-1">
+            {{ form.password.label_tag }}
+            <span class="text-sm underline">
+              <a href="{% url 'account_reset_password' %}">Forgot?</a>
+            </span>
+            </div>
+          
+            <input type="password" class="rounded-md w-full bg-gray-50 focus:bg-white border-gray-300" id="id_password" name="password">
+
+            <div style="color: red;">
+              {% for error in form.password.errors %}
               {{ error }}
-            {% endfor %}
+              {% endfor %}
+            </div>
           </div>
         </div>
 
-        <div class="">
-          <div class="mb-1">
-          {{ form.password.label_tag }}
-          <span class="text-sm underline">
-          <a href="{% url 'account_reset_password' %}">Forgot?</a>
-        </span>
-        </div>
-        
-          <input type="password" class="rounded-md w-full bg-gray-50 focus:bg-white border-gray-300" id="id_password" name="password">
+        <!-- <div class="forgot-password mt-3">
+          <p><a href="{% url 'account_reset_password' %}">Forgot my password</a></p>
+        </div> -->
 
-          <div style="color: red;">
-            {% for error in form.password.errors %}
-            {{ error }}
-            {% endfor %}
-          </div>
-        </div>
+          <button class="bg-green-600 text-white px-4 py-3 w-2/4 rounded-lg mt-4">Login</button>
+
+          <p class="mt-5 text-sm"  tyle="border: 1px dotted gray">Don't have an account? 
+            <a class="underline" href="{% url 'account_signup' %}">Sign up</a>
+          </p>
+      </form>
     </div>
-
-      <!-- <div class="forgot-password mt-3">
-        <p><a href="{% url 'account_reset_password' %}">Forgot my password</a></p>
-      </div> -->
-
-      <!-- <div class="" style="border: 1px solid gray;"> -->
-        <button class="bg-green-600 text-white px-4 py-3 w-2/4 rounded-lg mt-4">Login</button>
-
-        <p class="mt-5 text-sm"  tyle="border: 1px dotted gray">Don't have an account? 
-          <a class="underline" href="{% url 'account_signup' %}">Sign up</a>
-        </p>
-      <!-- </div> -->
-    </form>
-
-    
   </div>
-</div>
 </div>
 
 {% endblock content %}
