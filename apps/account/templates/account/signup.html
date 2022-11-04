@@ -11,13 +11,12 @@
 <div class="">
     <h1 class="">Sign Up</h1>
 
-
     <div class="">
         <form method="POST" novalidate>
             {% csrf_token %}
             <div>
-                {{ form.first_name.label_tag}}
-                {{ form.first_name }}
+                <label for="id_first_name">First name</label>
+                <input type="text" name="first_name" class="form-control" maxlength="150" required id="id_first_name">
 
                 {% for error in form.first_name.errors %}
                 <div style="color: red;">
@@ -28,8 +27,8 @@
 
 
             <div>
-                {{ form.last_name.label_tag}}
-                {{ form.last_name }}
+                <label for="id_last_name">Last name</label>
+                <input type="text" name="last_name"  maxlength="150" required id="id_last_name">
 
                 {% for error in form.last_name.errors %}
                 <div style="color: red;">
@@ -39,8 +38,8 @@
             </div>
 
             <div>
-                {{ form.email.label_tag}}
-                {{ form.email }}
+                <label for="id_email">Email</label>
+                <input type="email" name="email"  maxlength="254" autofocus required id="id_email">
 
                 {% for error in form.email.errors %}
                 <div style="color: red;">
@@ -50,8 +49,8 @@
             </div>
 
             <div>
-                {{ form.password1.label_tag}}
-                {{ form.password1 }}
+                <label for="id_password1">Password</label>
+                <input type="password" name="password1" required id="id_password1">
 
                 {% for error in form.password1.errors %}
                 <div style="color: red;">
