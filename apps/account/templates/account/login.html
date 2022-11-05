@@ -15,7 +15,7 @@
   {% if socialaccount_providers %}
   <div class="px-">
 
-    <h2 class="text-center text-2xl font-bold px-" styl="border: 1px dotted green;">
+    <h2 class="text-center text-2xl text-heading-color font-bold px-" styl="border: 1px dotted green;">
       Welcome, please sign in to your  {% blocktrans with site.name as site_name %} {{ site_name }} account.
      {% endblocktrans %}</h2>
   </div>
@@ -100,7 +100,7 @@
           <p><a href="{% url 'account_reset_password' %}">Forgot my password</a></p>
         </div> -->
 
-          <button class="bg-green-600 text-white px-4 py-3 w-2/4 rounded-lg mt-4">Login</button>
+          <button class="bg-primary-color text-white px-4 py-3 w-2/4 rounded-lg mt-4">Login</button>
 
           <p class="mt-5 text-sm"  tyle="border: 1px dotted gray">Don't have an account? 
             <a class="underline" href="{% url 'account_signup' %}">Sign up</a>
