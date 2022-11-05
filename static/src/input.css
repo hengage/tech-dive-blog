@@ -5,7 +5,8 @@
 
 @layer base {
     html {
-      font-family: 'Nunito Sans', 'sans-serif';
+      /* font-family: 'Nunito Sans', 'sans-serif'; */
+      font-family: Epilogue, sans-serif;;
       color: #948894;
     }
   }
