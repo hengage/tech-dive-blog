@@ -101,7 +101,7 @@
                 {% endif %}
 
 
-                <button type="submit" class="bg-primary-color text-white px-4 py-3 w-2/4 rounded-lg mt-4">
+                <button type="submit" class="bg-primary-color hover:bg-button-hover text-white px-4 py-3 w-2/4 rounded-lg mt-4">
                     Sign up
                 </button>
             </form>
@@ -113,13 +113,16 @@
         <p class="mb-7 text-xl"><span class="capitalize"> {% trans 'or' %}</span> sign up with</p>
 
         <a 
-          class="border-2 border-gray-200 rounded-md px-8 py-2.5" 
+        class="border-2 border-gray-200 rounded-md px-4 py-2 
+        hover:bgprimary-color2 hove:text-white transition ease-in-out 
+        delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-primary-color2
+       hover:border-primary-color2 hover:text-white hoverp-4 duration-1000" 
           styl="border: 2px solid blue;" 
           href="{% provider_login_url  "google"  process="connect" %}"
         > 
           <!-- <img class="inline w-6" src="https://img.icons8.com/color/48/null/google-logo.png" /> -->
           <img
-            class="w-7 inline" 
+            class="w-7 inline bg-white" 
             src="{% static '/the_blog/media/icons/icons8-google.svg' %}" 
             alt="google"  
           >

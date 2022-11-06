@@ -21,15 +21,18 @@
   </div>
 
 
-    <div class="text-center mt-12" styl="border: 2px dashed red;">
+    <div class="text-center mt-12 "" tyle="border: 2px dashed red;">
           <a 
-            class="border-2 border-gray-200 rounded-md px-4 py-2.5" 
+            class="border-2 border-gray-200 rounded-md px-4  py-2.5 
+             hover:bgprimary-color2 hove:text-white transition ease-in-out 
+             delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-primary-color2
+            hover:border-primary-color2 hover:text-white hoverp-4 duration-1000" 
             styl="border: 2px solid blue;" 
             href="{% provider_login_url  "google"  process="connect" %}"
           > 
             <!-- <img class="inline w-6" src="https://img.icons8.com/color/48/null/google-logo.png" /> -->
             <img
-              class="w-7 inline" 
+              class="w-7 inline bg-white" 
               src="{% static '/the_blog/media/icons/icons8-google.svg' %}" 
               alt="google"  
             >
@@ -100,7 +103,7 @@
           <p><a href="{% url 'account_reset_password' %}">Forgot my password</a></p>
         </div> -->
 
-          <button class="bg-primary-color text-white px-4 py-3 w-2/4 rounded-lg mt-4">Login</button>
+          <button class="bg-primary-color hover:bg-button-hover text-white px-4 py-3 w-2/4 rounded-lg mt-4">Login</button>
 
           <p class="mt-5 text-sm"  tyle="border: 1px dotted gray">Don't have an account? 
             <a class="underline" href="{% url 'account_signup' %}">Sign up</a>
