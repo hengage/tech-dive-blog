@@ -82,7 +82,7 @@
           
             <input type="email" class="rounded-md w-full bg-gray-50 focus:bg-white border-gray-300" id="id_login" name="login">
 
-            <div style="color: red;">
+            <div class="text-sm text-red-600">
               {% for error in form.login.errors %}
                 {{ error }}
               {% endfor %}
@@ -99,7 +99,7 @@
           
             <input type="password" class="rounded-md w-full bg-gray-50 focus:bg-white border-gray-300" id="id_password" name="password">
 
-            <div style="color: red;">
+            <div class="text-sm text-red-600">
               {% for error in form.password.errors %}
               {{ error }}
               {% endfor %}

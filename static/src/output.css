@@ -1160,8 +1160,8 @@ html {
   margin-top: 3rem;
 }
 
-.mt-7 {
-  margin-top: 1.75rem;
+.mt-8 {
+  margin-top: 2rem;
 }
 
 .mt-6 {
@@ -1198,10 +1198,6 @@ html {
 
 .mt-2 {
   margin-top: 0.5rem;
-}
-
-.mt-8 {
-  margin-top: 2rem;
 }
 
 .block {
@@ -1516,11 +1512,6 @@ html {
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
 }
 
-.bg-black {
-  --tw-bg-opacity: 1;
-  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
-}
-
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -1657,10 +1648,6 @@ html {
   font-weight: 500;
 }
 
-.uppercase {
-  text-transform: uppercase;
-}
-
 .capitalize {
   text-transform: capitalize;
 }
@@ -1696,6 +1683,11 @@ html {
 .text-heading-color {
   --tw-text-opacity: 1;
   color: rgb(107 106 148 / var(--tw-text-opacity));
+}
+
+.text-red-600 {
+  --tw-text-opacity: 1;
+  color: rgb(224 36 36 / var(--tw-text-opacity));
 }
 
 .text-blue-600 {
