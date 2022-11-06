@@ -103,7 +103,13 @@
           <p><a href="{% url 'account_reset_password' %}">Forgot my password</a></p>
         </div> -->
 
-          <button class="bg-primary-color hover:bg-button-hover text-white px-4 py-3 w-2/4 rounded-lg mt-4">Login</button>
+          <button 
+            class="bg-primary-color text-white 
+            px-4 py-3 w-2/4 rounded-lg mt-4 ease-in-out delay-150
+            hover:bg-button-hover duration-700"
+          >
+            Login
+          </button>
 
           <p class="mt-5 text-sm"  tyle="border: 1px dotted gray">Don't have an account? 
             <a class="underline" href="{% url 'account_signup' %}">Sign up</a>
