@@ -10,7 +10,7 @@
 {% get_providers as socialaccount_providers %}
 
 <div class="px-12" tyle="border: 6px solid red;">
-  <div class="container-sm mt-7 mx-auto" tyle="border: 2px solid blue">
+  <div class="container-sm mt-12 mx-auto" tyle="border: 2px solid blue">
 
   {% if socialaccount_providers %}
   <div class="px-">
@@ -39,7 +39,15 @@
             Login with Google
           </a>
 
-        <p class="mt-7 uppercase">{% trans 'or' %}</p>
+
+        <div class="mt-8 flex flex-row justify-center items-center py-3" tyle="border: 1px solid blue;">
+          <hr class="w-1/6 border-b border-gray-400">
+          <h3 class="text-xl w-16">
+            {% trans 'or' %}
+          </h3>
+          <hr class="w-1/6 border-b border-gray-400">
+        </div>
+
     </div>
 
     {% include "socialaccount/snippets/login_extra.html" %}
@@ -51,7 +59,7 @@
   {% endif %}
 
 
-    <div class="mt-12 flex justify-center items-center flex-col" tyle="border: 3.5px dashed orange;">
+    <div class="mt-6 flex justify-center items-center flex-col" tyle="border: 3.5px dashed orange;">
       <h2 class="text-2xl">Sign in with email</h2>
       <form
         method="POST" 
