@@ -83,7 +83,7 @@
             <input type="email" class="rounded-md w-full bg-gray-50 focus:bg-white border-gray-300" id="id_login" name="login">
 
             <div style="color: red;">
-              {% for error in form.username.errors %}
+              {% for error in form.login.errors %}
                 {{ error }}
               {% endfor %}
             </div>
