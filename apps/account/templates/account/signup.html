@@ -12,7 +12,7 @@
     <div class="container-sm mt-12 mx-auto" tyle="border: 2px solid blue">
         <h1 class="text-center text-2xl font-medium">Sign Up</h1>
 
-        <div class="mt-1.5 flex justify-center items-center flex-col" tyle="border: 3.5px dashed orange;">
+        <div class="mt-4 flex justify-center items-center flex-col" tyle="border: 3.5px dashed orange;">
             <form 
                 method="POST" 
                 novalidate 
@@ -21,43 +21,45 @@
             >
                 {% csrf_token %}
 
-                <div class="space-y-3 w-2/4">
-                    <div class="" tyle="border: 2px dashed blue;">
-                        <label class="block mb-1" for="id_first_name">First name</label>
-                        <input 
-                            type="text" 
-                            class="rounded-md w-full bg-gray-50 focus:bg-white border-gray-300"
-                            name="first_name" 
-                            class="form-control" 
-                            maxlength="150" 
-                            required
-                            id="id_first_name"
-                        >
+                <div class="space-y-3 w2/4 w-3/5">
+                    <div class="first-last-name flex space-x-5" tyle="border: 1px solid blue;">
+                        <div class="" tyle="border: 2px dashed blue;">
+                            <label class="block mb-1" for="id_first_name">First name</label>
+                            <input 
+                                type="text" 
+                                class="rounded-md w-full bg-gray-50 focus:bg-white border-gray-300"
+                                name="first_name" 
+                                class="form-control" 
+                                maxlength="150" 
+                                required
+                                id="id_first_name"
+                            >
 
-                        {% for error in form.first_name.errors %}
-                        <div class="text-sm text-red-600">
-                            {{ error }}
+                            {% for error in form.first_name.errors %}
+                            <div class="text-sm text-red-600">
+                                {{ error }}
+                            </div>
+                            {% endfor %}
                         </div>
-                        {% endfor %}
-                    </div>
 
 
-                    <div class="" tyle="border: 2px dashed blue;">
-                        <label class="block mb-1" for="id_last_name">Last name</label>
-                        <input 
-                            type="text"  
-                            class="rounded-md w-full bg-gray-50 focus:bg-white border-gray-300" 
-                            name="last_name" 
-                            maxlength="150" 
-                            required 
-                            id="id_last_name"
-                        >
+                        <div class="" tyle="border: 2px dashed blue;">
+                            <label class="block mb-1" for="id_last_name">Last name</label>
+                            <input 
+                                type="text"  
+                                class="rounded-md w-full bg-gray-50 focus:bg-white border-gray-300" 
+                                name="last_name" 
+                                maxlength="150" 
+                                required 
+                                id="id_last_name"
+                            >
 
-                        {% for error in form.last_name.errors %}
-                        <div class="text-sm text-red-600">
-                            {{ error }}
+                            {% for error in form.last_name.errors %}
+                            <div class="text-sm text-red-600">
+                                {{ error }}
+                            </div>
+                            {% endfor %}
                         </div>
-                        {% endfor %}
                     </div>
 
                     <div class="" tyle="border: 2px dashed blue;">
@@ -103,7 +105,7 @@
 
                 <button 
                     type="submit" 
-                    class="bg-primary-color text-white px-4 py-3 w-2/4 
+                    class="bg-primary-color text-white px-4 py-3 w-3/5 
                     rounded-lg mt-4 ease-in-out delay-150 hover:bg-button-hover duration-700"
                 >
                     Sign up
