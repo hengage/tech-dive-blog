@@ -41,11 +41,11 @@
 
 
         <div class="mt-8 flex flex-row justify-center items-center py-3" tyle="border: 1px solid blue;">
-          <hr class="w-1/6 border-b border-gray-400">
+          <hr class="w-3/6 md:w-1/6 border-b border-gray-400">
           <h3 class="text-xl w-16">
             {% trans 'or' %}
           </h3>
-          <hr class="w-1/6 border-b border-gray-400">
+          <hr class="w-3/6 md:w-1/6 border-b border-gray-400">
         </div>
 
     </div>
@@ -64,7 +64,7 @@
       <form
         method="POST" 
         novalidate 
-        class=" w-2/4 flex justify-center items-center flex-col mt-4"
+        class="w-full sm:w-3/6 md:w-3/4 xl:w-2/4 flex justify-center items-center flex-col mt-4"
         tyle="border: 3px solid yellow;"
       >
         {% csrf_token %}
@@ -74,7 +74,7 @@
           <p class="">Note that both fields may be case-sensitive.</p>
         {% endif %}
 
-        <div class="space-y-4 w-2/4" tyle="border: 2px dashed blue;">
+        <div class="space-y-4 w-full md:w-3/5" tyle="border: 2px dashed blue;">
           <div class="">
             <div class="mb-1">
             {{ form.login.label_tag }}
@@ -113,7 +113,7 @@
 
           <button 
             class="bg-primary-color text-white 
-            px-4 py-3 w-2/4 rounded-lg mt-4 ease-in-out delay-150
+            px-4 py-3 w-full sm:w2/4 md:w-3/5 rounded-lg mt-4 ease-in-out delay-150
             hover:bg-button-hover duration-700"
           >
             Login
