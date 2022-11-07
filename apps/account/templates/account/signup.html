@@ -33,6 +33,9 @@
                                 maxlength="150" 
                                 required
                                 id="id_first_name"
+                                {% if form.is_bound %}
+                                    value="{{ form.first_name.value }}"
+                                {% endif %}
                             >
 
                             {% for error in form.first_name.errors %}
@@ -52,6 +55,9 @@
                                 maxlength="150" 
                                 required 
                                 id="id_last_name"
+                                {% if form.is_bound %}
+                                    value="{{ form.last_name.value }}"
+                                {% endif %}
                             >
 
                             {% for error in form.last_name.errors %}
@@ -71,6 +77,9 @@
                             maxlength="254" 
                             autofocus required 
                             id="id_email"
+                            {% if form.is_bound %}
+                                    value="{{ form.email.value }}"
+                            {% endif %}
                         >
 
                         {% for error in form.email.errors %}

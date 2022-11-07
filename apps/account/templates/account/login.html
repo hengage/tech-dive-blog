@@ -80,7 +80,15 @@
             {{ form.login.label_tag }}
             </div>
           
-            <input type="email" class="rounded-md w-full bg-gray-50 focus:bg-white border-gray-300" id="id_login" name="login">
+            <input 
+              type="email" 
+              class="rounded-md w-full bg-gray-50 focus:bg-white border-gray-300" 
+              id="id_login" 
+              name="login"
+              {% if form.is_bound %}
+                value="{{ form.login.value }}"
+              {% endif %}
+            >
 
             <div class="text-sm text-red-600">
               {% for error in form.login.errors %}
@@ -97,7 +105,12 @@
             </span>
             </div>
           
-            <input type="password" class="rounded-md w-full bg-gray-50 focus:bg-white border-gray-300" id="id_password" name="password">
+            <input 
+              type="password" 
+              class="rounded-md w-full bg-gray-50 focus:bg-white border-gray-300" 
+              id="id_password" 
+              name="password"
+            >
 
             <div class="text-sm text-red-600">
               {% for error in form.password.errors %}
