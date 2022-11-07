@@ -18,6 +18,9 @@ module.exports = {
         'pry-font-color': '#948894',
         'heading-color': '#6b6a94'
       },
+      screens: {
+        'xsm': '520px'
+      }
     },
   },
   plugins: [
