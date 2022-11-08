@@ -5,9 +5,10 @@ from django.urls import reverse_lazy
 from django.shortcuts import render
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.detail import DetailView
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 
-from .models import Comment, Post
+from .models import Comment, Post, Category
 from .forms import CommentForm, CreatePostForm, EditPostForm 
 
 def error_404(request, exception):
@@ -96,3 +97,9 @@ class SearchPostsResultListView(ListView):
     def get_queryset(self):
         query = self.request.GET.get('q')
         return Post.objects.search(query=query)
+
+
+class CategoryDetailView(DetailView):
+    model = Category
+    context_object_name = 'category'
+    template_name = 'category.html'

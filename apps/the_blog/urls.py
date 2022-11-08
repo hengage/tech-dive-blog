@@ -5,7 +5,8 @@ from .views import (
     AddPostView, 
     UpdatePostView,
     DeletePostView, 
-    SearchPostsResultListView      
+    SearchPostsResultListView,
+    CategoryDetailView    
 )
 
 
@@ -17,4 +18,5 @@ urlpatterns = [
     path('article/edit_post/<slug:slug>/', UpdatePostView.as_view(), name='edit_post'),
     path('create_post/', AddPostView.as_view(), name='create_post'),
     path('search/', SearchPostsResultListView.as_view(), name='posts_search_results'),
+    path('category/<slug:slug>', CategoryDetailView.as_view(), name='category')
 ]
