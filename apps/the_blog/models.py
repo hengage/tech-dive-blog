@@ -3,26 +3,29 @@ from django.contrib.auth import get_user_model
 from django.urls import reverse
 from django.conf import settings
 from django.template.defaultfilters import slugify
+from django.db.models.signals import pre_save
 
 from markdownx.models import MarkdownxField
 from markdownx.utils import markdownify
 
 from .managers import PostManager
-
+from simple_blog.utils import unique_slug_generator
 class Category(models.Model):
     category_name = models.CharField(max_length=50, unique=True)
-    slug = models.SlugField(max_length=70, unique=True, default='')
+    slug = models.SlugField(max_length=70, null=True, blank=True, editable=False)
 
     def __str__(self):
         return f"{self.category_name}"
     class Meta: 
-        verbose_name = 'category_name'
+        verbose_name = 'category'
         verbose_name_plural = 'categories'
 
-    def save(self, *args, **kwargs): 
-        if not self.slug:
-            self.slug = slugify(self.category_name)
-        return super().save(*args, **kwargs)
+
+def pre_save_receiver(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        instance.slug = unique_slug_generator(instance)
+
+pre_save.connect(pre_save_receiver, sender=Category)
 
 class Post(models.Model):
     title = models.CharField(max_length=255, unique=True)
