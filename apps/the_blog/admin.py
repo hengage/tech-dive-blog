@@ -8,10 +8,19 @@ class CommentInline(admin.StackedInline):
     extra= 0
 
 class PostAdmin(admin.ModelAdmin):
-    inlines = [
-        CommentInline
-    ]
+    list_display = ['title', 'author', 'date_created']
+    inlines = [ CommentInline ]
+
+class PostInline(admin.StackedInline):
+    model = Post
+    extra = 0
+
+class CategoryAdmin(admin.ModelAdmin):
+    model = Category
+    list_display = ['category_name', 'id', 'slug']
+    inlines = [  PostInline ]
+
 admin.site.register(Post, PostAdmin) 
-admin.site.register(Category)
+admin.site.register(Category, CategoryAdmin)
 # admin.site.register(Post, MarkdownxModelAdmin)  
 admin.site.register(Comment,MarkdownxModelAdmin)
