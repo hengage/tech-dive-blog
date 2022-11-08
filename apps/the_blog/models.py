@@ -31,12 +31,12 @@ class Post(models.Model):
     title = models.CharField(max_length=255, unique=True)
     description = models.CharField(max_length=255, unique=True)
     slug = models.SlugField(max_length=255, unique=True)
-    # category = models.ForeignKey(
-    #     Category, 
-    #     on_delete=models.PROTECT,
-    #     related_name='category',
-    #     default='miscellaneous'
-    # )
+    category = models.ForeignKey(
+        Category, 
+        on_delete=models.PROTECT,
+        related_name='category',
+        default=1
+    )
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(
