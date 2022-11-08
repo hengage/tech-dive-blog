@@ -9,10 +9,31 @@ from markdownx.utils import markdownify
 
 from .managers import PostManager
 
+class Category(models.Model):
+    category_name = models.CharField(max_length=50, unique=True)
+    slug = models.SlugField(max_length=70, unique=True, default='')
+
+    def __str__(self):
+        return f"{self.category_name}"
+    class Meta: 
+        verbose_name = 'category_name'
+        verbose_name_plural = 'categories'
+
+    def save(self, *args, **kwargs): 
+        if not self.slug:
+            self.slug = slugify(self.category_name)
+        return super().save(*args, **kwargs)
+
 class Post(models.Model):
     title = models.CharField(max_length=255, unique=True)
     description = models.CharField(max_length=255, unique=True)
     slug = models.SlugField(max_length=255, unique=True)
+    # category = models.ForeignKey(
+    #     Category, 
+    #     on_delete=models.PROTECT,
+    #     related_name='category',
+    #     default='miscellaneous'
+    # )
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(
