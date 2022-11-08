@@ -5,5 +5,14 @@
 {% block content %}
 
 <h2>{{category}}</h2>
+
+{% for post in categoryposts %} 
+
+   <li>
+    {{ post.title }} - 
+    {{ post.author.first_name }} {{ post.author.last_name }}
+   </li> 
+
+{% endfor %}
     
 {% endblock content %}}

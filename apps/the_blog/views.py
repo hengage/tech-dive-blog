@@ -103,3 +103,12 @@ class CategoryDetailView(DetailView):
     model = Category
     context_object_name = 'category'
     template_name = 'category.html'
+
+    def get_context_data(self, *args, **kwargs):
+        category_slug  = self.kwargs['slug'].replace('-', ' ')
+        categoryposts = Post.objects.select_related().filter(
+            category__category_name__iexact=category_slug
+            )
+        context = super().get_context_data(*args, **kwargs)
+        context['categoryposts'] = categoryposts
+        return context
