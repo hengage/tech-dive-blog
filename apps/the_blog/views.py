@@ -6,6 +6,7 @@ from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
+from django.shortcuts import get_object_or_404
 
 from .models import Comment, Post, Category
 from .forms import CommentForm, CreatePostForm, EditPostForm 
@@ -22,7 +23,7 @@ class HomeView(ListView):
 
 
 def PostDetailView(request, slug):
-    post = Post.objects.get(slug__iexact=slug)
+    post = get_object_or_404(Post, slug__iexact=slug)
     comments = Comment.objects.filter(
         post=post.id
         ).order_by('-id')
