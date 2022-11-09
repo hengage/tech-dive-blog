@@ -50,15 +50,14 @@ class Post(models.Model):
         default=''
     )
     body = MarkdownxField()
-    likes = models.ManyToManyField(
-        settings.AUTH_USER_MODEL,
-        related_name='blog_posts',
-        blank=True
-    )
-        
+ 
+    # Post manager.
     objects = PostManager()
 
     def formatted_markdown(self):
+        '''
+        Format markdown for text
+        '''
         return markdownify(self.body)
 
     def __str__(self):
