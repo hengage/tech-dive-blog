@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.auth import get_user_model
 from django.urls import reverse
 from django.conf import settings
 from django.template.defaultfilters import slugify
@@ -10,6 +9,7 @@ from markdownx.utils import markdownify
 
 from .managers import PostManager
 from simple_blog.utils import unique_slug_generator
+
 class Category(models.Model):
     category_name = models.CharField(max_length=50, unique=True)
     slug = models.SlugField(max_length=70, null=True, blank=True, editable=False)
@@ -29,6 +29,7 @@ def pre_save_receiver(sender, instance, *args, **kwargs):
         instance.slug = unique_slug_generator(instance)
 
 pre_save.connect(pre_save_receiver, sender=Category)
+
 
 class Post(models.Model):
     title = models.CharField(max_length=255, unique=True)
@@ -53,12 +54,9 @@ class Post(models.Model):
         settings.AUTH_USER_MODEL,
         related_name='blog_posts',
         blank=True
-        )
+    )
+        
     objects = PostManager()
-
-    class Meta:
-        ordering = ['-date_created']
-
 
     def formatted_markdown(self):
         return markdownify(self.body)
@@ -74,11 +72,16 @@ class Post(models.Model):
             self.slug = slugify(self.title)
         return super().save(*args, **kwargs)
 
-
+    class Meta:
+        ordering = ['-date_created']
+        verbose_name = 'post'
+        verbose_name_plural = 'posts'
+        
 class Comment(models.Model):
-    post = models.ForeignKey(Post,
-     on_delete=models.CASCADE,
-    related_name='comments'
+    post = models.ForeignKey(
+        Post,
+        on_delete=models.CASCADE,
+        related_name='comments'
     )
     commentator = models.ForeignKey(
         settings.AUTH_USER_MODEL,

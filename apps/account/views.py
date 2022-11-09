@@ -1,13 +1,10 @@
-from django.shortcuts import get_object_or_404, render
-#from django.views import generic
-from django.views.generic import CreateView, UpdateView
-from django.contrib.auth.forms import UserCreationForm
-from django.urls import reverse, reverse_lazy
+from django.views.generic import UpdateView
+from django.urls import reverse
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
 
-from .forms import CustomUserCreationForm, UpdateUserForm
+from .forms import UpdateUserForm
 
 User = get_user_model()
 class UpdateUserView(UserPassesTestMixin, SuccessMessageMixin, UpdateView):

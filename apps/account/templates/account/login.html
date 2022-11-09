@@ -14,20 +14,19 @@
 
   {% if socialaccount_providers %}
   <div class="px-">
-
     <h2 class="text-center text-2xl text-heading-color font-bold px-" styl="border: 1px dotted green;">
       Welcome, please sign in to your  {% blocktrans with site.name as site_name %} {{ site_name }} account.
-     {% endblocktrans %}</h2>
+      {% endblocktrans %}
+    </h2>
   </div>
 
 
-    <div class="text-center mt-12 "" tyle="border: 2px dashed red;">
-          <a 
-            class="border-2 border-gray-200 rounded-md px-4  py-2.5 
-             hover:bgprimary-color2 hove:text-white transition ease-in-out 
-             delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-primary-color2
+    <div class="text-center mt-12">
+        <a 
+           class="border-2 border-gray-200 rounded-md px-4  py-2.5 
+            hover:bgprimary-color2 hove:text-white transition ease-in-out 
+            delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-primary-color2
             hover:border-primary-color2 hover:text-white hoverp-4 duration-1000" 
-            styl="border: 2px solid blue;" 
             href="{% provider_login_url  "google" %}"
           > 
             <!-- <img class="inline w-6" src="https://img.icons8.com/color/48/null/google-logo.png" /> -->
@@ -37,10 +36,9 @@
               alt="google"  
             >
             Login with Google
-          </a>
+        </a>
 
-
-        <div class="mt-8 flex flex-row justify-center items-center py-3" tyle="border: 1px solid blue;">
+        <div class="mt-8 flex flex-row justify-center items-center py-3">
           <hr class="w-3/6 md:w-1/6 border-b border-gray-400">
           <h3 class="text-xl w-16">
             {% trans 'or' %}
@@ -59,13 +57,12 @@
   {% endif %}
 
 
-    <div class="mt-6 flex justify-center items-center flex-col" tyle="border: 3.5px dashed orange;">
+    <div class="mt-6 flex justify-center items-center flex-col">
       <h2 class="text-2xl">Sign in with email</h2>
       <form
         method="POST" 
         novalidate 
         class="w-full sm:w-3/6 md:w-3/4 xl:w-2/4 flex justify-center items-center flex-col mt-4"
-        tyle="border: 3px solid yellow;"
       >
         {% csrf_token %}
 
@@ -74,7 +71,7 @@
           <p class="">Note that both fields may be case-sensitive.</p>
         {% endif %}
 
-        <div class="space-y-4 w-full md:w-3/5" tyle="border: 2px dashed blue;">
+        <div class="space-y-4 w-full md:w-3/5">
           <div class="">
             <div class="mb-1">
             {{ form.login.label_tag }}
@@ -120,21 +117,18 @@
           </div>
         </div>
 
-        <!-- <div class="forgot-password mt-3">
-          <p><a href="{% url 'account_reset_password' %}">Forgot my password</a></p>
-        </div> -->
+        <button 
+          class="bg-primary-color text-white 
+          px-4 py-3 w-full sm:w2/4 md:w-3/5 rounded-lg mt-4 ease-in-out delay-150
+          hover:bg-button-hover duration-700"
+        >
+          Login
+        </button>
 
-          <button 
-            class="bg-primary-color text-white 
-            px-4 py-3 w-full sm:w2/4 md:w-3/5 rounded-lg mt-4 ease-in-out delay-150
-            hover:bg-button-hover duration-700"
-          >
-            Login
-          </button>
-
-          <p class="mt-5 text-sm"  tyle="border: 1px dotted gray">Don't have an account? 
-            <a class="underline" href="{% url 'account_signup' %}">Sign up</a>
-          </p>
+        <p class="mt-5 text-sm">
+          Don't have an account? 
+          <a class="underline" href="{% url 'account_signup' %}">Sign up</a>
+        </p>
       </form>
     </div>
   </div>

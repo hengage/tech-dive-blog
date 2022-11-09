@@ -3,10 +3,9 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 from django.template.defaultfilters import slugify
-import random, string
+import random
 
 from .managers import CustomUserManager
-from simple_blog.utils import unique_slug_generator
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     username = None
     email = models.EmailField(_("email address"), unique=True)
@@ -21,9 +20,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     objects = CustomUserManager()
 
     USERNAME_FIELD = "email"
-
     REQUIRED_FIELDS = ["first_name", "last_name"]
-
     class Meta:
         ordering = ("email",)
         verbose_name = "user"

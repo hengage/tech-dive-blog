@@ -8,8 +8,6 @@ class PostQuerySet(models.QuerySet):
         lookups = Q(title__icontains=query) | Q(body__icontains=query)
         return self.filter(lookups)
 
-
-
 class PostManager(models.Manager):
     def get_queryset(self):
         return PostQuerySet(self.model, using=self._db)

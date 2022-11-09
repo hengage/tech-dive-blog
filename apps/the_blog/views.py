@@ -1,5 +1,4 @@
 from django.contrib.auth import get_user_model
-from django.http import request
 from django.http.response import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.shortcuts import render
@@ -83,9 +82,12 @@ class DeletePostView(UserPassesTestMixin, DeleteView):
     template_name = 'article_detail.html'
     success_url = reverse_lazy('home')
 
-    # Forbid a user from editing and deleting posts they
-    # did not create.
+   
     def test_func(self):
+        '''
+        Forbid a user from editing and deleting posts they
+        did not create.
+        '''
         obj = self.get_object()
         return obj.author == self.request.user
 
@@ -105,6 +107,9 @@ class CategoryDetailView(DetailView):
     template_name = 'category.html'
 
     def get_context_data(self, *args, **kwargs):
+        '''
+        Get the posts related to each category
+        '''
         category_slug  = self.kwargs['slug'].replace('-', ' ')
         categoryposts = Post.objects.select_related().filter(
             category__category_name__iexact=category_slug
