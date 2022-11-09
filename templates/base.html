@@ -101,7 +101,7 @@
 
           {% if user.is_authenticated %}
           <li style="border: 1px olid red;">
-            <a href="{% url 'update_user' user.id %}" 
+            <a href="{% url 'update_user' user.slug %}" 
             class="block py-2 pr-4 pl-3 text-gray-200 rounded hover:bg-gray100 bg-primary-color md:hover:bg-transparent
                hover:text-white md:p-0 dark:text-gray-400 md:dark:hover:text-white
                 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent

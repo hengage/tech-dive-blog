@@ -13,7 +13,7 @@ class CustomUserAdmin(UserAdmin):
     #form = UserChangeForm
 
     list_display = [
-        'email', 'last_name', 'is_staff',
+        'email', 'slug', 'last_name', 'is_staff',
     ]
 
     fieldsets= [
