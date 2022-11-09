@@ -15,6 +15,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # DEBUG = config('DEBUG', default=False, cast=bool)
+# DEBUG = False
 DEBUG = True
 ALLOWED_HOSTS = ['softdevblog.herokuapp.com', 'localhost', '127.0.0.1']
 
@@ -128,6 +129,9 @@ STATIC_URL = '/static/'
 STATIC_ROOT = STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles')) # os.path.join(BASE_DIR, '/static')
 STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# WHITENOISE_USE_FINDERS = True
+# WHITENOISE_MANIFEST_STRICT = False
+# WHITENOISE_ALLOW_ALL_ORIGINS = True
 
 #  Media files
 MEDIA_URL = '/media/'
