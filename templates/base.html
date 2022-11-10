@@ -31,30 +31,89 @@
         <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Totly</span>
     </a>
     <div class="flex items-center md:order-2">
-      {% if user.is_authenticated %}
 
-        <button type="button" class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+      <!-- Nav List (medium screen >) -->
+      <ul class="hidden md:flex p-4 bg-inherit mr-1
+        space-x-4 md:mt-0 md:text-sm md:font-medium"
+      >
+        <li>
+          <a 
+            href="#" 
+            class="bloc py-2 pr-4 pl-3 text-white rounded md:bg-transparent
+             aria-current="page">
+            Home
+          </a>
+        </li>
+        <li>
+          <a 
+            href="#" 
+            class="bloc py-2 pr-4 pl-3 text-white 
+             md:p-0 dark:text-white" aria-current="page">
+            Home
+          </a>
+        </li>
+      </ul>
+      <!-- ================================== -->
+
+      {% if user.is_authenticated %}
+        <button 
+          type="button" 
+          class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4
+           focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" 
+           aria-expanded="false" 
+           data-dropdown-toggle="user-dropdown" 
+           data-dropdown-placement="bottom"
+          >
           <span class="sr-only">Open user menu</span>
-          <img class="w-8 h-8 rounded-full" src="{% static '/the_blog/media/henry_chizoba_passport_photo.jpg' %}" " alt="user photo">
+          <img 
+            class="w-8 h-8 rounded-full" 
+            src="{% static '/the_blog/media/henry_chizoba_passport_photo.jpg' %}"  
+            alt="user photo"
+          >
         </button>
-        <!-- Dropdown menu -->
-        <div class="hidden z-50 my-4 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown" data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="bottom" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 10px);">
+
+        <!-- User Dropdown Menu -->
+        <div class="hidden z-50 my-4 text-base list-none bg-white rounded divide-y ml-8" 
+          id="user-dropdown" data-popper-reference-hidden="" data-popper-escaped="" 
+          data-popper-placement="bottom" 
+          style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 10px);"
+        >
           <div class="py-3 px-4">
             <span class="block text-sm text-gray-900 dark:text-white"> {{ user.first_name.title }}</span>
             <span class="block text-sm font-medium text-gray-500 truncate dark:text-gray-400"> {{ user.email }}</span>
           </div>
           <ul class="py-1" aria-labelledby="user-menu-button">
             <li>
-              <a href="{% url 'update_user' user.slug %}" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Profile</a>
+              <a 
+              href="{% url 'update_user' user.slug %}" 
+              class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100
+               dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+               Profile
+              </a>
             </li>
             <li>
-              <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</a>
+              <a 
+                href="#" 
+                class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100
+                 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                 Settings
+                </a>
             </li>
             <li>
-              <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Earnings</a>
+              <a 
+                href="#" 
+                class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100
+                 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                 Earnings
+                </a>
             </li>
             <li>
-              <a href="{% url 'account_logout' %}"" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
+              <a 
+                href="{% url 'account_logout' %}"" 
+                class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100
+                 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                 Sign out
+                </a>
             </li>
           </ul>
         </div>
@@ -72,8 +131,6 @@
           dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
           Sign up
         </a>
-
-
         {% endif %}
 
         <button 
@@ -97,8 +154,17 @@
         </svg>
       </button>
     </div>
-    <div class="hidden justify-between items-center w-full md:flex md:w-auto md:order-1" id="mobile-menu-2">
-      <ul class="flex flex-col space-y-3 md:space-y-0 p-4 mt-4 bg-gray-50 md:bg-white 
+    <div class="hidden justify-between items-center w-full md:flex md:w-auto md:order-1 mt-3 md:mt-0" id="mobile-menu-2">
+      <form action="" class="md:flex space-x-2 w-ful" tyle="border: 2px solid red;">
+        <input 
+          type="text" id="search-navbar" 
+          class="block px-6 w-full text-gray-900 bg-gray-50 rounded-lg border 
+        border-gray-300 sm:text-sm focus:ring-blue-500 focus:border-blue-500" 
+          placeholder="Search..."
+        >
+      </form>
+
+      <ul class="flex md:hidden flex-col space-y-3 md:space-y-0 p-4 mt-3 bg-gray-50 md:bg-white 
         rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium
          md:border-0  dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
       >
