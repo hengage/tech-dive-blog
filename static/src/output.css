@@ -1755,6 +1755,16 @@ html {
   color: rgb(55 65 81 / var(--tw-text-opacity));
 }
 
+.text-primary-color {
+  --tw-text-opacity: 1;
+  color: rgb(11 27 75 / var(--tw-text-opacity));
+}
+
+.text-gray-100 {
+  --tw-text-opacity: 1;
+  color: rgb(243 244 246 / var(--tw-text-opacity));
+}
+
 .underline {
   text-decoration-line: underline;
 }
@@ -2224,6 +2234,14 @@ html {
     background-color: transparent;
   }
 
+  .md\:bg-inherit {
+    background-color: inherit;
+  }
+
+  .md\:bg-none {
+    background-image: none;
+  }
+
   .md\:p-0 {
     padding: 0px;
   }
@@ -2240,6 +2258,11 @@ html {
   .md\:text-blue-700 {
     --tw-text-opacity: 1;
     color: rgb(26 86 219 / var(--tw-text-opacity));
+  }
+
+  .md\:text-primary-color {
+    --tw-text-opacity: 1;
+    color: rgb(11 27 75 / var(--tw-text-opacity));
   }
 
   .md\:hover\:bg-transparent:hover {
