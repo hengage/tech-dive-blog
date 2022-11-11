@@ -14,8 +14,17 @@ from .forms import CommentForm, CreatePostForm, EditPostForm
 def error_404(request, exception):
     return render(request, '404.html')
 
+class CategoriesListViewMixin(ListView):
+    """
+    Get all categories
+    """
+    def get_context_data(self, *args, **kwargs):
+        categories = Category.objects.all()
+        context = super().get_context_data(*args, **kwargs)
+        context['categories'] = categories
+        return context
 
-class HomeView(ListView):
+class HomeView(CategoriesListViewMixin,ListView):
     model = Post
     template_name = 'home.html'
     context_object_name = 'post_list'
@@ -101,6 +110,10 @@ class SearchPostsResultListView(ListView):
         query = self.request.GET.get('q')
         return Post.objects.search(query=query)
 
+# class CategoriesListView(ListView):
+#     model = Category
+#     context_object_name = 'categories'
+#     template_name = 'home.html'
 
 class CategoryDetailView(DetailView):
     model = Category
