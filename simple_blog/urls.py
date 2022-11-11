@@ -9,7 +9,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('the_blog.urls')),
     path('accounts/', include('allauth.urls')),
-    path('user/', include('account.urls')),
+    path('users/', include('account.urls')),
 
     # Django broswer reload
     path("__reload__/", include("django_browser_reload.urls")),

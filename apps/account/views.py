@@ -4,10 +4,19 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
 
+from allauth.account.views import LoginView, SignupView
+
 from .forms import UpdateUserForm
 from the_blog.views import CategoriesListViewMixin
 
 User = get_user_model()
+
+class CustomLoginView(CategoriesListViewMixin, LoginView):
+    pass
+
+class CustomSIgnUpView(CategoriesListViewMixin, SignupView):
+    pass
+
 class UpdateUserView(
     UserPassesTestMixin, 
     SuccessMessageMixin, 
