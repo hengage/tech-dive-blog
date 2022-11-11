@@ -1,6 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import get_user_model
+from django.core.exceptions import ValidationError
+
 from .models import CustomUser
 
 User = get_user_model()
@@ -15,7 +17,7 @@ class CustomUserCreationForm(UserCreationForm):
     password2 = None
             
     class Meta:
-        model = CustomUser
+        model = User
         fields = ['first_name', 'last_name', 'email', 'password1']
 
         widgets = {
@@ -23,6 +25,14 @@ class CustomUserCreationForm(UserCreationForm):
             'last_name': forms.TextInput(attrs={'class':'form-control'}),
             'email': forms.EmailInput(attrs={'class':'form-control'}),
         }
+    def clean_email(self):
+        email = self.cleaned_data['email'].lower()
+        new_email = User.objects.filter(email=email)
+        if new_email.count():
+            raise ValidationError(
+                'Email belongs to an existing account, please use another email or login.'
+            )
+        return email
 
 
 class UpdateUserForm(forms.ModelForm):
