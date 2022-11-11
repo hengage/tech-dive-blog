@@ -14,7 +14,7 @@ from .forms import CommentForm, CreatePostForm, EditPostForm
 def error_404(request, exception):
     return render(request, '404.html')
 
-class CategoriesListViewMixin(ListView):
+class CategoriesListViewMixin():
     """
     Get all categories
     """
@@ -40,6 +40,7 @@ def PostDetailView(request, slug):
     all_author_post = Post.objects.filter(
         author=post.author.id
         ).exclude(slug=slug)
+    categories = Category.objects.all()
 
     user = get_user_model()
 
@@ -63,12 +64,13 @@ def PostDetailView(request, slug):
         'post':post,
         'all_author_post':all_author_post,
         'comments':comments,
-        'comment_form':comment_form
+        'comment_form':comment_form,
+        'categories': categories
         }
     template = 'article_detail.html'
     return render(request, template, context)
 
-class AddPostView(LoginRequiredMixin, CreateView):
+class AddPostView(LoginRequiredMixin, CategoriesListViewMixin, CreateView):
     model = Post
     form_class = CreatePostForm
     template_name = 'create_post.html'
@@ -77,7 +79,7 @@ class AddPostView(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
         
-class UpdatePostView(UserPassesTestMixin, UpdateView):
+class UpdatePostView(UserPassesTestMixin, CategoriesListViewMixin, UpdateView):
     model = Post
     form_class = EditPostForm
     template_name = 'update_post.html'
@@ -86,12 +88,11 @@ class UpdatePostView(UserPassesTestMixin, UpdateView):
         obj = self.get_object()
         return obj.author == self.request.user
 
-class DeletePostView(UserPassesTestMixin, DeleteView):
+class DeletePostView(UserPassesTestMixin, CategoriesListViewMixin, DeleteView):
     model = Post
     # template_name = 'delete_post.html'
     template_name = 'article_detail.html'
     success_url = reverse_lazy('home')
-
    
     def test_func(self):
         '''
@@ -102,7 +103,7 @@ class DeletePostView(UserPassesTestMixin, DeleteView):
         return obj.author == self.request.user
 
 
-class SearchPostsResultListView(ListView):
+class SearchPostsResultListView(CategoriesListViewMixin, ListView):
     context_object_name = 'post_list'
     template_name = 'search_result.html'
 
@@ -115,7 +116,7 @@ class SearchPostsResultListView(ListView):
 #     context_object_name = 'categories'
 #     template_name = 'home.html'
 
-class CategoryDetailView(DetailView):
+class CategoryDetailView(CategoriesListViewMixin, DetailView):
     model = Category
     context_object_name = 'category'
     template_name = 'category.html'

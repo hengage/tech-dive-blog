@@ -5,9 +5,15 @@ from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
 
 from .forms import UpdateUserForm
+from the_blog.views import CategoriesListViewMixin
 
 User = get_user_model()
-class UpdateUserView(UserPassesTestMixin, SuccessMessageMixin, UpdateView):
+class UpdateUserView(
+    UserPassesTestMixin, 
+    SuccessMessageMixin, 
+    CategoriesListViewMixin, 
+    UpdateView
+):
     form_class = UpdateUserForm
     model = User
     context_object_name = 'current_user'
