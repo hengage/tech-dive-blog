@@ -8,23 +8,26 @@
 
 {% block content %}
 
+
 <div class="px-5 sm:px-12">
     <div class="container-sm mt-12 mx-auto">
         <h1 class="text-center text-2xl font-medium">Sign Up</h1>
 
         <div class="mt-4 flex justify-center items-center flex-col">
             <form 
+                id="signup_form"
                 method="POST" 
                 novalidate 
                 class="w-full md:w-2/4 flex justify-center items-center flex-col mt-4"
                 tyle="border: 2px solid yellow;"
+                onsubmit="return validateSignupFormData();"
             >
                 {% csrf_token %}
 
                 <div class="space-y-3 w-full xsm:w-3/4 sm:w-3/5 md:w-full xl:w-3/5">
                     <div class="first-last-name block xsm:flex justify-between gap-0 xsm:space-x-5">
                         <div class="xsm:basis-full">
-                            <label class="block mb-1" for="id_first_name">
+                            <label class="block mb-1" for="id_first_name" pattern='[Bb]anana|[Cc]herry'>
                                 First name
                             </label>
                             <input 
@@ -45,6 +48,9 @@
                                     {{ error }}
                                 </div>
                             {% endfor %}
+                            <p id="signup-firstname-error" class="text-sm text-red-600"></p>
+
+
                         </div>
 
                         <div class="xsm:basis-full" tyle="border: 2px dashed blue;">
@@ -68,6 +74,7 @@
                                     {{ error }}
                                 </div>
                             {% endfor %}
+                            <p id="signup-lastname-error" class="text-sm text-red-600"></p>
                         </div>
                     </div>
 
@@ -111,6 +118,7 @@
                             {{ error }}
                         </div>
                         {% endfor %}
+                        <p id="signup-password-error" class="text-sm text-red-600"></p>
                     </div>
 
                 {% if redirect_field_value %}
@@ -155,3 +163,5 @@
 </div>
 
 {% endblock content %}
+
+<script src="/static/js/validators.js"></script>
