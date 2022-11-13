@@ -6,15 +6,8 @@ const validate = (error) => {
     const signupLastName = signupForm.last_name
     const signupPassword = signupForm.password1
 
-    const whiteSpaceRegexPattern  = /\s/g; //Check for whitespaces
-
-    // Test the fields against the regex to check for whitespaces
-    const firstNameContainsWhiteSpace = whiteSpaceRegexPattern.test(signupFirstName.value)
-    const lastNameContainsWhiteSpace = whiteSpaceRegexPattern.test(signupLastName.value)
-    const passwordContainsWhiteSpace = whiteSpaceRegexPattern.test(signupPassword.value)
-
     const signupFormFirstNameError = document.getElementById("signup-firstname-error");
-    if ( firstNameContainsWhiteSpace ) {
+    if ( signupFirstName.value.includes(' ') ) {
         error.push('First name should not contain spaces')
         signupFormFirstNameError.textContent = 'First name should not contain whitespace'
     }   else {
@@ -22,15 +15,15 @@ const validate = (error) => {
     } 
 
     const signupFormLastNameError = document.getElementById("signup-lastname-error");
-    if ( lastNameContainsWhiteSpace ) {
+    if ( signupLastName.value.includes(' ') ) {
         error.push('Last name should not contain spaces')
         signupFormLastNameError.textContent = 'Last name should not contain whitespace'
-    }   else {
+    } else {
         signupFormLastNameError.textContent = ''
     }
 
     const passwordError =  document.getElementById('signup-password-error')
-    if ( passwordContainsWhiteSpace ) {
+    if ( signupPassword.value.includes(' ') ) {
         error.push('Password cannot contain spaces')
         passwordError.textContent = 'Password cannot contain whitespace'
     }   else {
@@ -40,7 +33,6 @@ const validate = (error) => {
 
 
 const validateSignupFormData = () => {
-    
     const error = new Array;
     console.log({error})
 
