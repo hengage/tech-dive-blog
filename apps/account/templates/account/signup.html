@@ -48,7 +48,7 @@
                                     {{ error }}
                                 </div>
                             {% endfor %}
-                            <p id="signup-firstname-error" class="text-sm text-red-600"></p>
+                            <p id="signup-firstname-error-text" class="text-sm text-red-600"></p>
 
 
                         </div>
@@ -74,7 +74,7 @@
                                     {{ error }}
                                 </div>
                             {% endfor %}
-                            <p id="signup-lastname-error" class="text-sm text-red-600"></p>
+                            <p id="signup-lastname-error-text" class="text-sm text-red-600"></p>
                         </div>
                     </div>
 
@@ -99,6 +99,7 @@
                             {{ error }}
                         </div>
                         {% endfor %}
+                        <p id="signup-email-error-text" class="text-sm text-red-600"></p>
                     </div>
 
                     <div class="" tyle="border: 2px dashed blue;">
@@ -118,7 +119,7 @@
                             {{ error }}
                         </div>
                         {% endfor %}
-                        <p id="signup-password-error" class="text-sm text-red-600"></p>
+                        <p id="signup-password-error-text" class="text-sm text-red-600"></p>
                     </div>
 
                 {% if redirect_field_value %}
