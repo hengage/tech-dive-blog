@@ -25,6 +25,8 @@ class CustomUserCreationForm(UserCreationForm):
             'last_name': forms.TextInput(attrs={'class':'form-control'}),
             'email': forms.EmailInput(attrs={'class':'form-control'}),
         }
+
+
     def clean_email(self):
         email = self.cleaned_data['email'].lower()
         new_email = User.objects.filter(email=email)
@@ -33,6 +35,17 @@ class CustomUserCreationForm(UserCreationForm):
                 'Email belongs to an existing account, please use another email or login.'
             )
         return email
+
+    def clean_password1(self):
+        """
+        Check if password has whitespace
+        """
+        password1 = self.cleaned_data['password1']
+        if password1.find(' ') != -1:
+            raise ValidationError('Password can\'t contain spaces')
+        return password1
+
+    
 
 
 class UpdateUserForm(forms.ModelForm):

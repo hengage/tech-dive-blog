@@ -4,13 +4,28 @@ from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 from django.template.defaultfilters import slugify
 import random
+from django.core.exceptions import ValidationError
 
 from .managers import CustomUserManager
+
+
+def validate_field_has_no_whitesapce(value):
+    """
+    Check if model fields have whitespaces"""
+    if value.find(' ') != -1:
+
+    # t = value.split()
+    # if len(t) > 1:
+        raise ValidationError(
+            _("This field cannot contain spaces")
+        )
+
+
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     username = None
     email = models.EmailField(_("email address"), unique=True)
-    first_name = models.CharField(max_length=150)
-    last_name = models.CharField(max_length=150)
+    first_name = models.CharField(max_length=150, validators=[ validate_field_has_no_whitesapce ])
+    last_name = models.CharField(max_length=150,  validators=[ validate_field_has_no_whitesapce ])
     slug = models.SlugField(max_length=70, null=True, blank=True, editable=False)
     date_joined = models.DateTimeField(default=timezone.now)
     is_staff = models.BooleanField(default=False)
