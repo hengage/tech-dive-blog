@@ -5,15 +5,35 @@
 {% block content %}
 
 <main class="px-6 pb-12">
-    <div class="space-y-4">
-        <h1 class="text-3xl font-bold">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            Fugiat cumque nulla temporibus accusantium s enim reiciendis! Sequi, expedita repudiandae.
-        </p>
+    <div 
+        class="space-y-4 md:space-y-16 lg:space-y-8 md:flex mt-9 justify-around content-around" 
+        tyle="border: 2px solid orange;"
+    >
+        <div 
+            class="space-y-6 sm:px-0 xl:px-16 md:grow- md:w3/5 basis-3/6 md:pt-12 xl:pt-24" 
+            tyle="border:2px solid green"
+        >
+            <h1 class="text-3xl sm:text-4xl font-bold sm:px-16 md:px-0 sm:text-center md:text-left">
+                Lorem ipsum dolor sit consectetur elit.
+            </h1>
+            <p class="sm:px-10 md:px-0">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Fugiat cumque nulla temporibus accusantium s enim reiciendis! Sequi, expedita repudiandae.
+            </p>
+        </div>
 
-        <img class="mx-auto max-w-l h-aut" src="{% static '/the_blog/media/girl_texting.png' %}" alt="" srcset="">
-        <!-- <img src="{% static '/the_blog/media/boy_on_bed.png' %}" alt="" srcset=""> -->
+        <div class="w2/4 basis-3/5 md:pl-16 xl:pr-16" tyle="border: 3px dotted blue;">
+            <img 
+                class="block sm:hidden mx-auto w-full md:h-auto max-w- h-aut" 
+                src="{% static '/the_blog/media/girl_texting.png' %}" 
+                alt=""
+            >
+            <img 
+                class="hidden sm:block mx-auto md:mr-16 md:w-full rounded-md" 
+                src="{% static '/the_blog/media/boy_on_bed.png' %}" 
+                alt=""
+            >
+        </div>
     </div>
 
     <div class="mt-16">
