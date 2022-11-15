@@ -43,7 +43,8 @@
         <div class="space-y-5 sm:space-y-0 mt-4 sm:grid sm:grid-cols-2 md:grid-cols-3 md:gap-4"
             tyle="border: 2px solid yellow;">
             {% for post in post_list %}
-            <div class="h56 w64 bgwhite bg-primary-color text-white rounded-lg border border-gray-200 shadow-md"
+            <div 
+                class="h56 w64 bgwhite bg-primary-color text-white rounded-lg border border-gray-200 shadow-md "
                 tyle="border: 2px solid red;">
                 <!-- <a href="#">
                     <img class="rounded-t-lg" src="{% static '/the_blog/media/boy_on_bed.png' %}" alt="">
@@ -52,7 +53,8 @@
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray900 text-white"> {{ post.title}}</h5>
                     <!-- </a> -->
                     <p class="mb-3 font-normal text-gray-700 text-white/90">
-                        {{ post.description }}
+                        <!-- {{ post.description }} -->
+                        {{ post.body|slice:":150" }}...
                     </p>
                     <a 
                         href="{% url 'article_detail' post.slug %}" 
