@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 
 {% block content %}
@@ -6,13 +7,19 @@
 <main class="px-6 pb-12">
     <div class="space-y-4">
         <h1 class="text-3xl font-bold">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat cumque nulla temporibus accusantium s enim reiciendis! Sequi, expedita repudiandae.</p>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Fugiat cumque nulla temporibus accusantium s enim reiciendis! Sequi, expedita repudiandae.
+        </p>
+
+        <img class="mx-auto max-w-l h-aut" src="{% static '/the_blog/media/girl_texting.png' %}" alt="" srcset="">
+        <!-- <img src="{% static '/the_blog/media/boy_on_bed.png' %}" alt="" srcset=""> -->
     </div>
 
+    <div class="mt-16">
+        <h4 class="text-2xl text-heading-color">Top Articles</h4>
 
-    <div class="mt-8 space-y-6">
-
-        <div class="space-y-5">
+        <div class="space-y-5 mt-4">
             {% for post in post_list %}
             <div class="max-w-sm bgwhite bg-primary-color text-white rounded-lg border border-gray-200 shadow-md"
                 tyle="border: 2px solid red;">
