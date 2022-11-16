@@ -1089,10 +1089,6 @@ html {
   position: relative;
 }
 
-.sticky {
-  position: sticky;
-}
-
 .inset-0 {
   top: 0px;
   right: 0px;
@@ -1109,10 +1105,6 @@ html {
   left: 0px;
 }
 
-.bottom-0 {
-  bottom: 0px;
-}
-
 .top-0 {
   top: 0px;
 }
@@ -1123,6 +1115,10 @@ html {
 
 .right-0 {
   right: 0px;
+}
+
+.bottom-0 {
+  bottom: 0px;
 }
 
 .z-10 {
@@ -1285,10 +1281,6 @@ html {
 
 .h-5 {
   height: 1.25rem;
-}
-
-.h-56 {
-  height: 14rem;
 }
 
 .h-9 {
@@ -2335,14 +2327,6 @@ html {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .sm\:gap-14 {
-    gap: 3.5rem;
-  }
-
-  .sm\:gap-10 {
-    gap: 2.5rem;
-  }
-
   .sm\:gap-8 {
     gap: 2rem;
   }
@@ -2458,28 +2442,8 @@ html {
     width: 50%;
   }
 
-  .md\:w-64 {
-    width: 16rem;
-  }
-
-  .md\:w-32 {
-    width: 8rem;
-  }
-
-  .md\:grid-cols-3 {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
   .md\:flex-row {
     flex-direction: row;
-  }
-
-  .md\:gap-4 {
-    gap: 1rem;
-  }
-
-  .md\:gap-12 {
-    gap: 3rem;
   }
 
   .md\:gap-6 {
@@ -2600,8 +2564,12 @@ html {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .lg\:gap-6 {
-    gap: 1.5rem;
+  .lg\:grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .lg\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .lg\:space-y-8 > :not([hidden]) ~ :not([hidden]) {

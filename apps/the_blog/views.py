@@ -28,7 +28,7 @@ class HomeView(CategoriesListViewMixin,ListView):
     model = Post
     template_name = 'home.html'
     context_object_name = 'post_list'
-    #paginate_by = 2
+    paginate_by = 6
 
 
 def PostDetailView(request, slug):
