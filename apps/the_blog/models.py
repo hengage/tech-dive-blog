@@ -33,7 +33,7 @@ pre_save.connect(pre_save_receiver, sender=Category)
 
 class Post(models.Model):
     title = models.CharField(max_length=255, unique=True)
-    description = models.CharField(max_length=255, unique=True)
+    description = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=255, unique=True)
     category = models.ForeignKey(
         Category, 
