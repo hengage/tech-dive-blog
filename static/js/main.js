@@ -20,9 +20,9 @@ $(document).ready(() =>{
     $(window).scroll(() => {
         var iCurScrollPos = $(this).scrollTop();
         if (iCurScrollPos > iScrollPos) {
-            $('nav').fadeOut(500);
+            $('header').fadeOut(500);
         } else {
-            $('nav').fadeIn(500);
+            $('header').fadeIn(500);
         }
         iScrollPos = iCurScrollPos;
     });
