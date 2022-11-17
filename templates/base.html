@@ -3,7 +3,7 @@
 {% load django_browser_reload %}
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="relative">
 
 <head>
   <!-- Required meta tags -->
@@ -16,12 +16,18 @@
 
   <link rel="stylesheet" href="{% static 'src/output.css' %}">
   <script src="https://kit.fontawesome.com/77dc0b03c6.js" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 </head>
 
-<body>
+<body class="relative">
 
-  <nav class="bg-primary-color border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-900">
+
+  <nav 
+    class="bg-primary-color border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-900 
+    fixed top-0 left0 right0 w-full z-20 mb-10"
+    id="nav"
+  >
     <div class="container flex flex-wrap justify-between items-center mx-auto">
     <a href="{% url 'home' %}" class="flex items-center">
         <img src="https://flowbite.com/docs/images/logo.svg" class="mr-3 h-6 sm:h-9" lt="Flowbite Logo">
@@ -256,8 +262,10 @@
     </div>
   </nav>
   
+  <div class="mt-14"></div>
+  
 
-<div class="md:hidden mb-5">
+<div class="md:hidden mb-5 mt14">
   <div class="px-">
 
     {% if categories.all %}
@@ -277,21 +285,6 @@
     {% endif %}
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <!--   
@@ -420,8 +413,7 @@
   {% endblock content %}
 
 
-  <script src="/static/js/main.js"></script>
-
+  <script src="{% static '/js/main.js' %}   "></script>
   <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
 
   {% django_browser_reload_script %}

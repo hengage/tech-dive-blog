@@ -1089,6 +1089,10 @@ html {
   position: relative;
 }
 
+.sticky {
+  position: sticky;
+}
+
 .inset-0 {
   top: 0px;
   right: 0px;
@@ -1233,6 +1237,22 @@ html {
 
 .mt-2 {
   margin-top: 0.5rem;
+}
+
+.mb-10 {
+  margin-bottom: 2.5rem;
+}
+
+.mt-20 {
+  margin-top: 5rem;
+}
+
+.mt-14 {
+  margin-top: 3.5rem;
+}
+
+.mt-28 {
+  margin-top: 7rem;
 }
 
 .block {
@@ -1797,6 +1817,16 @@ html {
 .px-5 {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
+}
+
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.py-16 {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 .pr-4 {
@@ -2562,14 +2592,6 @@ html {
 @media (min-width: 1024px) {
   .lg\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .lg\:grid-cols-1 {
-    grid-template-columns: repeat(1, minmax(0, 1fr));
-  }
-
-  .lg\:grid-cols-4 {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .lg\:space-y-8 > :not([hidden]) ~ :not([hidden]) {
