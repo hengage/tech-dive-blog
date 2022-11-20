@@ -5,41 +5,43 @@
 {% block content %}
 
 
-<section class="" ;>
+<!-- 
+Install the "flowbite-typography" NPM package to apply styles and format the article content: 
 
-    <article class="">
+URL: https://flowbite.com/docs/components/typography/ 
+-->
 
-        <h1 class="">{{ post.title.upper }}</h1>
-        <h5 class="">
+<main class="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white dark:bg-gray-900">
+    <div class="flex justify-between px-4 mx-auto max-w-screen-xl ">
+        <article class="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
+            <div class="mb-4 lg:mb-6 not-format">
+                <address class="flex items-center mb-6 not-italic">
+                    <div class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
+                        <img class="mr-4 w-16 h-16 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-2.jpg" alt="Jese Leos">
+                        <div>
+                            <a href="#" rel="author" class="text-xl font-bold text-gray-900 dark:text-white"> {{ post.author.first_name.title }} {{ post.author.last_name.title }}</a>
+                            <p class="text-base font-light text-gray-500 dark:text-gray-400">Graphic Designer, educator & CEO Flowbite</p>
+                            <p class="text-base font-light text-gray-500 dark:text-gray-400"><time pubdate datetime="{{ post.date_created }}" title= "{{ post.date_created }}">{{ post.date_created }}</time></p>
+                        </div>
+                    </div>
+                </address>
+                <h1 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white"> {{ post.title.title }} </h1>
+            </div>
 
-        </h5>
-        <small>
-            By: {{ post.author.first_name.title }} {{ post.author.last_name.title }} |
-            Email: {{ post.author.email }}
-
-            <br>
-            Created: {{ post.date_created }}
-            {% if post.date_updated %}
-            <br>
-            Last updated: {{ post.date_updated }}
+            {% if user.id == post.author.id %}
+            <div class="">
+                <a href="{% url 'edit_post' post.slug %}">
+                    <button type="button" class="">
+                        Edit
+                    </button>
+                </a>
+    
+                <a class=""
+                    href="{% url 'delete_post' post.slug %}" id="delete-post">
+                    Delete
+                </a>
+            </div>
             {% endif %}
-        </small>
-
-        {% if user.id == post.author.id %}
-        <div class="">
-            <a href="{% url 'edit_post' post.slug %}">
-                <button type="button" class="">
-                    Edit
-                </button>
-            </a>
-
-            <a class=""
-                href="{% url 'delete_post' post.slug %}" id="delete-post">
-                Delete
-            </a>
-        </div>
-        {% endif %}
-        <hr>
 
         <div class="" id="delete-post-modal">
             <div class="">
@@ -58,7 +60,6 @@
                                 <!-- </a> -->
                             </button>
 
-
                             <button type="button" class="">
                                 Cancel
                             </button>
@@ -67,14 +68,44 @@
                 </div>
             </div>
         </div>
-
-        <div class="" style="margin-top: 20px;">
-            <!-- {{ post.formatted_markdown|safe }} -->
+          <!-- {{ post.formatted_markdown|safe }} -->
             {{ post.body | safe}}
+        </article>
+    </div>
+  </main>
+  
+  {% if all_author_post %}
+  <aside aria-label="Related articles" class="py-8 lg:py-24 bg-gray-50 dark:bg-gray-800">
+    <div class="px-4 mx-auto max-w-screen-xl">
+        <h2 class="mb-8 text-2xl font-bold text-gray-900 dark:text-white">Other articles by {{ post.author.first_name.title }} {{ post.author.last_name.title }}</h2>
+        <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">           
+            {% for post in all_author_post %}
+            {% cycle 'blog-1.png' 'blog-2.png' 'blog-3.png' 'blog-4.png' 'blog-5.png' as photocircle silent %}
+            <article class="max-w-xs">
+                <a href="#">
+                    <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/{{photocircle}}" class="mb-5 rounded-lg" alt="Image 4">
+                </a>
+                <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
+                    <a href="#">{{ post.title }}</a>
+                </h2>
+                <p class="mb-4 font-light text-gray-500 dark:text-gray-400">   <!-- {{ post.description }} -->
+                    {{ post.body|slice:":150" }}...
+                </p>
+                <a 
+                    href="{% url 'article_detail' post.slug %}" 
+                    class="inline-flex items-center font-medium underline underline-offset-4 
+                    text-primary-600 dark:text-primary-500 hover:no-underline">
+                    Read 
+                </a>
+            </article>
+            {% endfor %} 
         </div>
-        </div>
-    </article>
+    </div>
+  </aside>
+  {% endif %}
+  
 
+<section class="" ;>
     <div class="" style="width: 90%" ;">
         <h3>Comments:</h3>
         <h6 class="">{{ comments.count }} comment{{ comments.all|pluralize }}</h6>
@@ -120,28 +151,10 @@
     </div>
 </section>
 
-{% if all_author_post %}
-<div>
-    <h4>
-        More Posts By
-        {{ post.author.first_name }} {{ post.author.last_name }}
-    </h4>
-    {% for post in all_author_post %}
-    <div class="">
-        <a class="" href="{% url 'article_detail' post.slug%}">
-            {{post.title}}
-        </a>
-    </div {% endfor %} </div>
-    {% endif %}
-
-
     <br>
     <button class="" onclick="history.back()">
         Go back
     </button>
 </div>
-
-
-
 
 {% endblock content %}
