@@ -26,15 +26,16 @@ URL: https://flowbite.com/docs/components/typography/
                             </p>
                             
                             {% if user.id == post.author.id %}
-                            <div class="">
+                            <div class="space-x-3">
                                 <a href="{% url 'edit_post' post.slug %}">
-                                    <button type="button" class="">
+                                    <button type="button" class="text-blue-600 hover:text-pry-font-color">
                                         Edit
                                     </button>
                                 </a>
 
                                 <button 
                                     type="button"  
+                                    class="text-blue-600 hover:text-pry-font-color"
                                     data-modal-toggle="delete-post-modal" 
                                     id="delete-post" 
                                 >

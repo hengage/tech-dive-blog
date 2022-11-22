@@ -1635,6 +1635,12 @@ html {
   margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
 }
 
+.space-x-3 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(0.75rem * var(--tw-space-x-reverse));
+  margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
 .divide-y > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-y-reverse: 0;
   border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
@@ -2081,6 +2087,11 @@ html {
   color: rgb(28 100 242 / var(--tw-text-opacity));
 }
 
+.text-primary-color {
+  --tw-text-opacity: 1;
+  color: rgb(11 27 75 / var(--tw-text-opacity));
+}
+
 .underline {
   text-decoration-line: underline;
 }
@@ -2248,6 +2259,11 @@ html {
 .hover\:text-gray-600:hover {
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+
+.hover\:text-pry-font-color:hover {
+  --tw-text-opacity: 1;
+  color: rgb(148 136 148 / var(--tw-text-opacity));
 }
 
 .hover\:underline:hover {
