@@ -3,16 +3,44 @@
 {% block title %} Category {% endblock title %}
 
 {% block content %}
+{% load static %}
 
-<h2>{{category}}</h2>
 
-{% for post in categoryposts %} 
+<div class="mt-12 md:mt-32 mb-16 px-5 lg:px-14 " tyle="border: 2px dotted red;">
+   <h4 class="text-2xl text-center md:text-3xl text-heading-color">{{ category.category_name.title }}</h4>
 
-   <li>
-    {{ post.title }} - 
-    {{ post.author.first_name }} {{ post.author.last_name }}
-   </li> 
-
-{% endfor %}
+   
+   <div class="space-y-5 md:w-11/12 xl:w-10/12 mx-auto sm:space-y-0 mt-8 md:mt-14 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-8 md:gap-6 "
+       tyle="border: 2px solid yellow;">
+       {% for post in categoryposts %} 
+       <div 
+           class="h56 mdw32 md:w2/5 bgwhite bg-primary-colo text-pry-font-color rounded-lg border border-gray-200 shadow-md "
+           tyle="border: 2px solid red;">
+           <!-- <a href="#">
+               <img class="rounded-t-lg" src="{% static '/the_blog/media/boy_on_bed.png' %}" alt="">
+           </a> -->
+           <div class="p-5 min-h-full " tyle="border: 3px dotted blue;">
+               <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray900 text-heading-color"> {{ post.title.title }}</h5>
+               <!-- </a> -->
+               <p class="mb-3 font-normal text-pry-font-color">
+                   <!-- {{ post.description }} -->
+                   {{ post.body|slice:":150" }}...
+               </p>
+             
+               <a 
+                   href="{% url 'article_detail' post.slug %}" 
+                   class="inline-flex items-center py-2 px-3 text-sm font-medium 
+                    text-center text-white bg-blue700 bg-primary-color rounded-lg hover:bg-blue-800
+                     focus:ring-4 focus:outline-none focus:ring-blue-300 mt-3
+                      "
+                   >
+                   Read
+                   <svg aria-hidden="true" class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+               </a>
+           </div>
+       </div>
+       {% endfor %}
+   </div>
+</div>
     
 {% endblock content %}}
