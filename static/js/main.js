@@ -2,12 +2,12 @@
 
 
 // Delete post using modal on the same page
-const deletePost = document.getElementById("delete-post");
-console.log(deletePost.href)
+// const deletePost = document.getElementById("delete-post");
+// console.log(deletePost.href)
 
-deletePost?.addEventListener("click", () => {
-    document.getElementById("delete-post-form").action = deletePost.href;
-});
+// deletePost?.addEventListener("click", () => {
+//     document.getElementById("delete-post-form").action = deletePost.href;
+// });
 
 
 

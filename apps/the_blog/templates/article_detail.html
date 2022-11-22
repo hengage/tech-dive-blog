@@ -32,15 +32,13 @@ URL: https://flowbite.com/docs/components/typography/
                                         Edit
                                     </button>
                                 </a>
-                                <button type="button" data-modal-toggle="delete-post-modal">Delete post</button>
-                                <button>
-                                <a class=""
-                                    href="{% url 'delete_post' post.slug %}" 
-                                    data-modal-toggle="delete-post-modal"
+
+                                <button 
+                                    type="button"  
+                                    data-modal-toggle="delete-post-modal" 
                                     id="delete-post" 
                                 >
                                     Delete
-                                </a>
                                 </button>
                             </div>
                             {% endif %}
@@ -53,14 +51,13 @@ URL: https://flowbite.com/docs/components/typography/
                                 >
                                 <div class="relative w-full max-w-md h-full md:h-auto">
                                     <div class="relative bg-primary-color text-white rounded-lg shadow" style=" margin-right: 2em; max-width: 100%;">
-                                       
-                                        <form actio="" method="POST" class="" id="delete-post-form">
+                                        <form action="{% url 'delete_post' post.slug %}" method="POST" class="" id="delete-post-form">
                                             {% csrf_token %}
                                             <button 
-                                            type="button" 
-                                            class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200
-                                             hover:text-white rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" 
-                                             data-modal-toggle="delete-post-modal">
+                                                type="button" 
+                                                class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200
+                                                hover:text-white rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" 
+                                                data-modal-toggle="delete-post-modal">
                                             <svg 
                                                 aria-hidden="true" class="w-5 h-5" 
                                                 fill="currentColor" viewBox="0 0 20 20" 
@@ -274,15 +271,13 @@ URL: https://flowbite.com/docs/components/typography/
 </main>
 
 
-
-  
   {% if all_author_post %}
   <aside aria-label="Related articles" class="py-8 lg:py-24 bg-gray-50 dark:bg-gray-800">
     <div class="px-4 mx-auto max-w-screen-xl">
         <h2 class="mb-8 text-2xl font-bold text-gray-900 dark:text-white">Other articles by {{ post.author.first_name.title }} {{ post.author.last_name.title }}</h2>
         <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">           
             {% for post in all_author_post %}
-            {% cycle 'blog-1.png' 'blog-2.png' 'blog-3.png' 'blog-4.png' 'blog-5.png' as photocircle silent %}
+            {% cycle 'blog-1.png' 'blog-2.png' 'blog-3.png' 'blog-4.png' as photocircle silent %}
             <article class="max-w-xs">
                 <a href="#">
                     <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/{{photocircle}}" class="mb-5 rounded-lg" alt="Image 4">
@@ -306,8 +301,6 @@ URL: https://flowbite.com/docs/components/typography/
   </aside>
   {% endif %}
   
-
-
     <br>
     <button class="" onclick="history.back()">
         Go back
