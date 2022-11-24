@@ -1278,6 +1278,10 @@ html {
   margin-top: 0.5rem;
 }
 
+.mt-32 {
+  margin-top: 8rem;
+}
+
 .block {
   display: block;
 }
@@ -1346,6 +1350,22 @@ html {
   height: 2.25rem;
 }
 
+.h-screen {
+  height: 100vh;
+}
+
+.h-2\/4 {
+  height: 50%;
+}
+
+.h-3\/4 {
+  height: 75%;
+}
+
+.h-64 {
+  height: 16rem;
+}
+
 .min-h-full {
   min-height: 100%;
 }
@@ -1404,6 +1424,14 @@ html {
 
 .w-3 {
   width: 0.75rem;
+}
+
+.w-3\/5 {
+  width: 60%;
+}
+
+.w-4\/6 {
+  width: 66.666667%;
 }
 
 .min-w-fit {
@@ -1947,6 +1975,14 @@ html {
 
 .pt-2 {
   padding-top: 0.5rem;
+}
+
+.pl-9 {
+  padding-left: 2.25rem;
+}
+
+.pl-32 {
+  padding-left: 8rem;
 }
 
 .text-center {

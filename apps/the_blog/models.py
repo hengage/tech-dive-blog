@@ -9,7 +9,9 @@ from markdownx.utils import markdownify
 
 from .managers import PostManager
 from simple_blog.utils import unique_slug_generator
+
 from prose.fields import RichTextField
+from prose.models import AbstractDocument
 
 class Category(models.Model):
     category_name = models.CharField(max_length=50, unique=True)
@@ -32,6 +34,8 @@ def pre_save_receiver(sender, instance, *args, **kwargs):
 pre_save.connect(pre_save_receiver, sender=Category)
 
 
+class ArticleContent(AbstractDocument):
+    pass
 class Post(models.Model):
     title = models.CharField(max_length=255, unique=True)
     description = models.CharField(max_length=255, unique=True)
@@ -51,6 +55,7 @@ class Post(models.Model):
         default=''
     )
     body = RichTextField()
+    # body = models.OneToOneField(ArticleContent, on_delete=models.CASCADE)
     # body = MarkdownxField()
  
     # Post manager.
