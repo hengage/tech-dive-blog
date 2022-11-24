@@ -14,8 +14,11 @@ urlpatterns = [
     # Django broswer reload
     path("__reload__/", include("django_browser_reload.urls")),
 
+    # Django prose for text editing
+    path("prose/", include("prose.urls")),
+
     # markdownx 
-    path('markdownx/', include(markdownx))
+    # path('markdownx/', include(markdownx))
     # path('markdownx/', include('markdownx.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     # 3rd party apps.
     'crispy_forms',
     'markdownx',
+    'prose',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',

@@ -9,10 +9,11 @@ from markdownx.utils import markdownify
 
 from .managers import PostManager
 from simple_blog.utils import unique_slug_generator
+from prose.fields import RichTextField
 
 class Category(models.Model):
     category_name = models.CharField(max_length=50, unique=True)
-    slug = models.SlugField(max_length=70, null=True, blank=True, editable=False)
+    slug = models.SlugField(max_length=255, null=True, blank=True, editable=False)
 
     def __str__(self):
         return f"{self.category_name}"
@@ -33,7 +34,7 @@ pre_save.connect(pre_save_receiver, sender=Category)
 
 class Post(models.Model):
     title = models.CharField(max_length=255, unique=True)
-    description = models.CharField(max_length=100, unique=True)
+    description = models.CharField(max_length=255, unique=True)
     slug = models.SlugField(max_length=255, unique=True)
     category = models.ForeignKey(
         Category, 
@@ -49,16 +50,12 @@ class Post(models.Model):
         related_name='author',
         default=''
     )
-    body = MarkdownxField()
+    body = RichTextField()
+    # body = MarkdownxField()
  
     # Post manager.
     objects = PostManager()
 
-    def formatted_markdown(self):
-        '''
-        Format markdown for text
-        '''
-        return markdownify(self.body)
 
     def __str__(self):
             return f"{self.title} | {str(self.author).title()}"

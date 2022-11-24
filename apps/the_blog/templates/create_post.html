@@ -11,14 +11,14 @@
 
         <h2 class="">Add A New Post</h2>
 
-        <form method="POST">
+        <form method="POST" class="w-2/3">
             {% csrf_token %}
             {{ form.as_p }}
+            <div class="article-body">{{ article.body.content | safe}}</div>
             <button class="">Submit Post</button>
         </form>
         
-        <div class="">
-        <p></p>
+        <div class="w-2/3">
         {{ form.media }}
         </div>
     </div>
