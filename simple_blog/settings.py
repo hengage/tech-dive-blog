@@ -145,8 +145,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # As a result i refer to 'account' as 'users' here, which is the label
 AUTH_USER_MODEL = 'users.CustomUser'
 
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'login'
+# LOGIN_REDIRECT_URL = 'home'
+# LOGOUT_REDIRECT_URL = 'login'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
