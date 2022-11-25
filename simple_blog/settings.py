@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'markdownx',
     'prose',
     'allauth',
-    'allauth.account',
+    # 'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.facebook',
