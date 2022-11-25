@@ -25,7 +25,7 @@ ALLOWED_HOSTS = ['softdevblog.herokuapp.com', 'localhost', '127.0.0.1']
 INSTALLED_APPS = [
       # Created apps.
     'the_blog.apps.TheBlogConfig',
-    'account.apps.AccountConfig',
+    'users.apps.UsersConfig',
 
     # Django default apps
     'django.contrib.admin',
