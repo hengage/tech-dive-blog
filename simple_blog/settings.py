@@ -201,11 +201,11 @@ ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
 ACCOUNT_LOGOUT_ON_GET = True
 
 ACCOUNT_SIGNUP_REDIRECT_URL = 'home'
-ACCOUNT_SIGNUP_FORM_CLASS = 'account.forms.CustomUserCreationForm'
+ACCOUNT_SIGNUP_FORM_CLASS = 'users.forms.CustomUserCreationForm'
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
 
 ACCOUNT_FORMS = {
-    'signup': 'account.forms.CustomUserCreationForm',
+    'signup': 'users.forms.CustomUserCreationForm',
 }
 
 SOCIALACCOUNT_PROVIDERS = {
